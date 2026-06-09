@@ -126,7 +126,7 @@ function Nav() {
       <nav className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
           <img src={mgLogo.url} alt="MG — Mustapha Bourigue" width={40} height={28} className="h-7 w-auto" />
-          <span className="font-display font-bold text-lg hidden sm:inline">Mustapha<span className="text-primary">.</span></span>
+          <span className="font-display font-bold text-base sm:text-lg hidden sm:inline tracking-tight">MAXIMUM <span className="text-primary">GROWTH</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           {links.map(l => (
