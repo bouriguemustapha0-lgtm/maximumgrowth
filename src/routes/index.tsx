@@ -39,6 +39,7 @@ import p3 from "@/assets/project-3.jpg";
 import p4 from "@/assets/project-4.jpg";
 import p5 from "@/assets/project-5.jpg";
 import p6 from "@/assets/project-6.jpg";
+import mgLogo from "@/assets/mg-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -121,9 +122,9 @@ function Nav() {
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "backdrop-blur-xl bg-background/70 border-b border-border" : ""}`}>
       <nav className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 font-display font-bold text-lg">
-          <span className="grid place-items-center w-8 h-8 rounded-md bg-[image:var(--gradient-primary)] text-primary-foreground">MB</span>
-          <span>Mustapha<span className="text-primary">.</span></span>
+        <a href="#top" className="flex items-center gap-2.5">
+          <img src={mgLogo.url} alt="MG — Mustapha Bourigue" width={40} height={28} className="h-7 w-auto" />
+          <span className="font-display font-bold text-lg hidden sm:inline">Mustapha<span className="text-primary">.</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           {links.map(l => (
@@ -721,8 +722,8 @@ function Footer() {
   return (
     <footer className="border-t border-border py-10">
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-sm text-muted-foreground">
-        <div className="flex items-center gap-2 font-display font-semibold text-foreground">
-          <span className="grid place-items-center w-7 h-7 rounded-md bg-[image:var(--gradient-primary)] text-primary-foreground text-xs">MB</span>
+        <div className="flex items-center gap-2.5 font-display font-semibold text-foreground">
+          <img src={mgLogo.url} alt="MG logo" width={36} height={26} className="h-6 w-auto" />
           Mustapha Bourigue
         </div>
         <div>© {new Date().getFullYear()} Mustapha Bourigue. All rights reserved.</div>
