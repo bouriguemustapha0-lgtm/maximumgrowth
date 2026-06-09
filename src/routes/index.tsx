@@ -31,7 +31,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast, Toaster } from "sonner";
 
-import portrait from "@/assets/portrait.jpg";
+import portraitAsset from "@/assets/mustapha-portrait.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
@@ -40,6 +40,8 @@ import p4 from "@/assets/project-4.jpg";
 import p5 from "@/assets/project-5.jpg";
 import p6 from "@/assets/project-6.jpg";
 import mgLogo from "@/assets/mg-logo.png.asset.json";
+
+const portrait = portraitAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
