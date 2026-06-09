@@ -31,7 +31,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast, Toaster } from "sonner";
 
-import portrait from "@/assets/portrait.jpg";
+import portraitAsset from "@/assets/mustapha-portrait.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
@@ -40,6 +40,8 @@ import p4 from "@/assets/project-4.jpg";
 import p5 from "@/assets/project-5.jpg";
 import p6 from "@/assets/project-6.jpg";
 import mgLogo from "@/assets/mg-logo.png.asset.json";
+
+const portrait = portraitAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -124,7 +126,7 @@ function Nav() {
       <nav className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
           <img src={mgLogo.url} alt="MG — Mustapha Bourigue" width={40} height={28} className="h-7 w-auto" />
-          <span className="font-display font-bold text-lg hidden sm:inline">Mustapha<span className="text-primary">.</span></span>
+          <span className="font-display font-bold text-base sm:text-lg hidden sm:inline tracking-tight">MAXIMUM <span className="text-primary">GROWTH</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           {links.map(l => (
@@ -724,7 +726,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center gap-2.5 font-display font-semibold text-foreground">
           <img src={mgLogo.url} alt="MG logo" width={36} height={26} className="h-6 w-auto" />
-          Mustapha Bourigue
+          MAXIMUM <span className="text-primary">GROWTH</span>
         </div>
         <div>© {new Date().getFullYear()} Mustapha Bourigue. All rights reserved.</div>
         <div className="flex gap-4">
