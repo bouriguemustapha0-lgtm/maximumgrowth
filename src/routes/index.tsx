@@ -726,7 +726,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center gap-2.5 font-display font-semibold text-foreground">
           <img src={mgLogo.url} alt="MG logo" width={36} height={26} className="h-6 w-auto" />
-          Mustapha Bourigue
+          MAXIMUM <span className="text-primary">GROWTH</span>
         </div>
         <div>© {new Date().getFullYear()} Mustapha Bourigue. All rights reserved.</div>
         <div className="flex gap-4">
