@@ -382,15 +382,15 @@ function Services() {
 /* ---------- Portfolio ---------- */
 function Portfolio() {
   const projects = [
-    { img: p1, title: "AI Portfolio Website", desc: "Personal branding & lead generation.", tags: ["Next.js", "Tailwind", "AI"] },
-    { img: p2, title: "Video Editor Portfolio", desc: "Gallery, services & client inquiries.", tags: ["React", "Motion", "CMS"] },
-    { img: p3, title: "Student Portfolio Platform", desc: "Academic projects & achievements.", tags: ["React", "Tailwind"] },
-    { img: p4, title: "SaaS Landing Page", desc: "High-converting product launch page.", tags: ["Next.js", "TypeScript"] },
-    { img: p5, title: "AI Business Website", desc: "Integrated chatbot & automation.", tags: ["AI", "Next.js", "OpenAI"] },
-    { img: p6, title: "Personal Brand Website", desc: "Premium identity for creators.", tags: ["React", "Framer"] },
+    { img: hotelImg, title: "Hotel Agnaou", desc: "Moroccan guesthouse website with booking integration.", tags: ["Hospitality", "Next.js"], demoUrl: "https://hotelagnaoue.lovable.app" },
+    { img: darazurImg, title: "Dar Azur", desc: "Luxury 17th-century riad website with spa & suites.", tags: ["Hospitality", "Tailwind"], demoUrl: "https://darazur.lovable.app" },
+    { img: goldenImg, title: "Maison Aurelle", desc: "Five-star luxury hotel showcase with room bookings.", tags: ["Hospitality", "React"], demoUrl: "https://golden-suite-showcase.lovable.app" },
+    { img: redflameImg, title: "Red Flame", desc: "Fine dining steakhouse with menu & reservations.", tags: ["Restaurant", "AI"], demoUrl: "https://redflame.lovable.app" },
   ];
-  const filters = ["All", "Web", "AI", "Branding"];
+  const filters = ["All", "Hospitality", "Restaurant"];
   const [active, setActive] = useState("All");
+
+  const filtered = active === "All" ? projects : projects.filter(p => p.tags.includes(active));
 
   return (
     <section id="work" className="relative py-32">
@@ -423,8 +423,8 @@ function Portfolio() {
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {filtered.map((p, i) => (
             <Reveal key={p.title} delay={i * 80}>
               <article className="group relative rounded-2xl overflow-hidden glass hover:border-primary/40 transition-all duration-500">
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -439,8 +439,9 @@ function Portfolio() {
                   <h3 className="font-display font-semibold text-xl">{p.title}</h3>
                   <p className="text-sm text-muted-foreground mt-1">{p.desc}</p>
                   <div className="mt-5 flex gap-2">
-                    <Button variant="hero" size="sm">Live Demo <ExternalLink /></Button>
-                    <Button variant="heroOutline" size="sm">Case Study</Button>
+                    <a href={p.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex">
+                      <Button variant="hero" size="sm">Live Demo <ExternalLink /></Button>
+                    </a>
                   </div>
                 </div>
               </article>
