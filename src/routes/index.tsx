@@ -23,6 +23,11 @@ import {
   Globe,
   Linkedin,
   MapPin,
+  MessageCircle,
+  Instagram,
+  Copy,
+  Check,
+  Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "sonner";
