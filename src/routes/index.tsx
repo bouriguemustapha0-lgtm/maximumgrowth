@@ -33,12 +33,10 @@ import { toast, Toaster } from "sonner";
 
 import portraitAsset from "@/assets/mustapha-portrait.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
-import p1 from "@/assets/project-1.jpg";
-import p2 from "@/assets/project-2.jpg";
-import p3 from "@/assets/project-3.jpg";
-import p4 from "@/assets/project-4.jpg";
-import p5 from "@/assets/project-5.jpg";
-import p6 from "@/assets/project-6.jpg";
+import hotelImg from "@/assets/project-hotel.jpg";
+import darazurImg from "@/assets/project-darazur.jpg";
+import goldenImg from "@/assets/project-golden.jpg";
+import redflameImg from "@/assets/project-redflame.jpg";
 import mgLogo from "@/assets/mg-logo.png.asset.json";
 
 const portrait = portraitAsset.url;
