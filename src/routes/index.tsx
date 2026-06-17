@@ -579,69 +579,170 @@ function Process() {
 }
 
 /* ---------- Contact ---------- */
+function ContactRow({
+  icon: Icon,
+  label,
+  value,
+  href,
+  copyable,
+}: {
+  icon: typeof Mail;
+  label: string;
+  value: string;
+  href?: string;
+  copyable?: boolean;
+}) {
+  const [copied, setCopied] = useState(false);
+  const onCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {}
+  };
+  const content = (
+    <div className="flex items-center gap-4 rounded-xl border border-border/60 bg-card/40 backdrop-blur px-4 py-3 hover:border-primary/50 hover:bg-card/70 transition-all">
+      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
+        <Icon className="w-4 h-4" />
+      </div>
+      <div className="flex-1 min-w-0 text-left">
+        <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/80 font-semibold">{label}</div>
+        <div className="text-sm font-medium text-foreground truncate">{value}</div>
+      </div>
+      {copyable && (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onCopy();
+          }}
+          aria-label={`Copy ${label}`}
+          className="text-muted-foreground hover:text-primary transition-colors shrink-0"
+        >
+          {copied ? <Check className="w-4 h-4 text-primary" /> : <Copy className="w-4 h-4" />}
+        </button>
+      )}
+    </div>
+  );
+  return href ? (
+    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="block">
+      {content}
+    </a>
+  ) : (
+    content
+  );
+}
+
 function Contact() {
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
       <div className="absolute inset-0" style={{ background: "var(--gradient-radial)" }} />
-      <div className="relative mx-auto max-w-4xl px-6 text-center space-y-10">
-        <Reveal>
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-            <Sparkles className="w-3.5 h-3.5" /> Contact
-          </div>
-        </Reveal>
-        <Reveal delay={100}>
-          <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-            Let's build something <span className="text-gradient">amazing</span> together.
-          </h2>
-        </Reveal>
-        <Reveal delay={200}>
-          <div className="text-muted-foreground leading-relaxed max-w-xl mx-auto space-y-3 text-left sm:text-center">
-            <div className="flex items-center gap-3 sm:justify-center">
-              <Mail className="w-4 h-4 text-primary shrink-0" />
-              <span>bouriguemustapha0@gmail.com</span>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-transparent pointer-events-none" />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="text-center space-y-5 mb-14">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold">
+              <Sparkles className="w-3.5 h-3.5" /> Let's connect
             </div>
-            <div className="flex items-center gap-3 sm:justify-center">
-              <Phone className="w-4 h-4 text-primary shrink-0" />
-              <span>+212 699 309 986</span>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              Let's build something <span className="text-gradient">amazing</span> together.
+            </h2>
+          </Reveal>
+          <Reveal delay={150}>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Have a project in mind or want to discuss how AI can accelerate your growth? Reach out — I usually reply within 24 hours.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-6 lg:gap-8">
+          {/* Left: contact details */}
+          <Reveal delay={200} className="lg:col-span-3">
+            <div className="relative rounded-2xl border border-border bg-card/30 backdrop-blur-xl p-6 sm:p-8 h-full">
+              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+              <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
+                Contact details
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <ContactRow icon={Mail} label="Email" value="bouriguemustapha0@gmail.com" href="mailto:bouriguemustapha0@gmail.com" copyable />
+                <ContactRow icon={Phone} label="Phone" value="+212 699 309 986" href="tel:+212699309986" copyable />
+                <ContactRow icon={Globe} label="Website" value="maximumgrowth.AI" />
+                <ContactRow icon={Linkedin} label="LinkedIn" value="Mustapha Bourigue" href="https://www.linkedin.com/in/mustapha-bourigue" />
+                <ContactRow icon={MapPin} label="Based in" value="Morocco" />
+                <ContactRow icon={Calendar} label="Availability" value="Open to new projects" />
+              </div>
             </div>
-            <div className="flex items-center gap-3 sm:justify-center">
-              <Globe className="w-4 h-4 text-primary shrink-0" />
-              <span>maximumgrowth.AI</span>
+          </Reveal>
+
+          {/* Right: quick actions */}
+          <Reveal delay={300} className="lg:col-span-2">
+            <div className="flex flex-col gap-4 h-full">
+              <a
+                href="https://wa.me/212699309986"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-2xl p-6 border border-border bg-card/30 backdrop-blur-xl hover:border-primary/60 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative flex items-start gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-primary-foreground shrink-0 shadow-lg shadow-primary/30">
+                    <MessageCircle className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-foreground flex items-center gap-2">
+                      WhatsApp <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    </div>
+                    <div className="text-sm text-muted-foreground mt-0.5">Chat with me directly</div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="https://www.instagram.com/mustapha_bourigue_mg?igsh=MWV2ZWlsMHZkMDF1cg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-2xl p-6 border border-border bg-card/30 backdrop-blur-xl hover:border-primary/60 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative flex items-start gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary shrink-0">
+                    <Instagram className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-foreground flex items-center gap-2">
+                      Instagram <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    </div>
+                    <div className="text-sm text-muted-foreground mt-0.5">Follow my work & updates</div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="mailto:bouriguemustapha0@gmail.com?subject=Project%20Inquiry"
+                className="group relative overflow-hidden rounded-2xl p-6 border border-primary/40 bg-gradient-to-br from-primary/15 to-primary/5 backdrop-blur-xl hover:border-primary transition-all"
+              >
+                <div className="relative flex items-start gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-primary-foreground shrink-0 shadow-lg shadow-primary/30">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-foreground flex items-center gap-2">
+                      Send an email <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    </div>
+                    <div className="text-sm text-muted-foreground mt-0.5">Best for project briefs</div>
+                  </div>
+                </div>
+              </a>
             </div>
-            <div className="flex items-center gap-3 sm:justify-center">
-              <Linkedin className="w-4 h-4 text-primary shrink-0" />
-              <span>Mustapha Bourigue</span>
-            </div>
-            <div className="flex items-center gap-3 sm:justify-center">
-              <MapPin className="w-4 h-4 text-primary shrink-0" />
-              <span>Morocco</span>
-            </div>
-          </div>
-        </Reveal>
-        <Reveal delay={300}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://wa.me/212699309986"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              WhatsApp
-            </a>
-            <a
-              href="https://www.instagram.com/mustapha_bourigue_mg?igsh=MWV2ZWlsMHZkMDF1cg=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              Instagram
-            </a>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- Footer ---------- */
 function Footer() {
