@@ -34,7 +34,7 @@ import darazurImg from "@/assets/project-darazur.jpg";
 import goldenImg from "@/assets/project-golden.jpg";
 import redflameImg from "@/assets/project-redflame.jpg";
 import mgLogo from "@/assets/mg-logo.png.asset.json";
-import whatsappQr from "@/assets/whatsapp-qr.png.asset.json";
+
 
 const portrait = portraitAsset.url;
 
@@ -631,18 +631,6 @@ function Contact() {
             >
               Instagram
             </a>
-          </div>
-        </Reveal>
-        <Reveal delay={400}>
-          <div className="mt-12 flex flex-col items-center gap-4">
-            <div className="rounded-2xl bg-white p-6 shadow-elegant border border-border/50 inline-block">
-              <img
-                src={whatsappQr.url}
-                alt="Scan to chat with Mustapha on WhatsApp"
-                className="w-56 h-56 object-contain"
-                loading="lazy"
-              />
-            </div>
           </div>
         </Reveal>
       </div>
