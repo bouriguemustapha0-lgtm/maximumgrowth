@@ -577,141 +577,45 @@ function Process() {
 }
 
 /* ---------- Contact ---------- */
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email").max(255),
-  projectType: z.string().trim().min(1, "Select a project type").max(100),
-  budget: z.string().trim().max(100).optional(),
-  message: z.string().trim().min(10, "Tell me a bit more").max(2000),
-});
-
 function Contact() {
-  const [submitting, setSubmitting] = useState(false);
-
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const data = Object.fromEntries(fd.entries());
-    const res = contactSchema.safeParse(data);
-    if (!res.success) {
-      toast.error(res.error.issues[0]?.message ?? "Invalid form");
-      return;
-    }
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      (e.target as HTMLFormElement).reset();
-      toast.success("Message sent! I'll get back to you within 24h.");
-    }, 900);
-  }
-
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
       <div className="absolute inset-0" style={{ background: "var(--gradient-radial)" }} />
-      <div className="relative mx-auto max-w-6xl px-6 grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5 space-y-8">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-              <Sparkles className="w-3.5 h-3.5" /> Contact
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Let's build something <span className="text-gradient">amazing</span> together.
-            </h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="text-muted-foreground leading-relaxed">
-              Fill in the form or reach out directly. I usually reply within 24 hours.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <ul className="space-y-4">
-              {[
-                { icon: Mail, label: "bouriguemustapha0@gmail.com", href: "mailto:bouriguemustapha0@gmail.com" },
-                { icon: Phone, label: "+212 699 309 986", href: "tel:+212699309986" },
-                { icon: Globe, label: "maximumgrowth.AI", href: "#" },
-                { icon: Linkedin, label: "Mustapha Bourigue", href: "#" },
-                { icon: MapPin, label: "Morocco" },
-              ].map(({ icon: I, label, href }) => (
-                <li key={label}>
-                  {href ? (
-                    <a href={href} className="flex items-center gap-3 group">
-                      <span className="grid place-items-center w-10 h-10 rounded-lg glass text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        <I className="w-4 h-4" />
-                      </span>
-                      <span className="text-sm group-hover:text-primary transition-colors">{label}</span>
-                    </a>
-                  ) : (
-                    <div className="flex items-center gap-3">
-                      <span className="grid place-items-center w-10 h-10 rounded-lg glass text-primary"><I className="w-4 h-4" /></span>
-                      <span className="text-sm">{label}</span>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-
-        <Reveal delay={150} className="lg:col-span-7">
-          <form onSubmit={onSubmit} className="glass rounded-2xl p-7 space-y-5">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" placeholder="Your full name" required maxLength={100} />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="you@example.com" required maxLength={255} />
-              </div>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="projectType">Project Type</Label>
-                <select
-                  id="projectType"
-                  name="projectType"
-                  required
-                  className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                  defaultValue=""
-                >
-                  <option value="" disabled>Select a project type</option>
-                  <option>Student Portfolio</option>
-                  <option>Freelancer Website</option>
-                  <option>Creator Portfolio</option>
-                  <option>AI Integration</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="budget">Budget</Label>
-                <select
-                  id="budget"
-                  name="budget"
-                  className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                  defaultValue=""
-                >
-                  <option value="">Select budget (optional)</option>
-                  <option>Under $500</option>
-                  <option>$500 – $1,500</option>
-                  <option>$1,500 – $5,000</option>
-                  <option>$5,000+</option>
-                </select>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
-              <Textarea id="message" name="message" placeholder="Tell me about your project, goals, and timeline…" rows={5} required maxLength={2000} />
-            </div>
-            <Button type="submit" variant="hero" size="lg" className="w-full" disabled={submitting}>
-              {submitting ? "Sending…" : (<>Let's Build Something Amazing <ArrowRight /></>)}
-            </Button>
-            <p className="text-xs text-muted-foreground flex items-center gap-2">
-              <Check className="w-3.5 h-3.5 text-primary" />
-              Your information stays private. No spam, ever.
-            </p>
-          </form>
+      <div className="relative mx-auto max-w-4xl px-6 text-center space-y-10">
+        <Reveal>
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold">
+            <Sparkles className="w-3.5 h-3.5" /> Contact
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
+          <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
+            Let's build something <span className="text-gradient">amazing</span> together.
+          </h2>
+        </Reveal>
+        <Reveal delay={200}>
+          <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            Reach out directly. I usually reply within 24 hours.
+          </p>
+        </Reveal>
+        <Reveal delay={300}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://wa.me/212699309986"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              WhatsApp
+            </a>
+            <a
+              href="https://www.instagram.com/mustapha_bourigue_mg?igsh=MWV2ZWlsMHZkMDF1cg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              Instagram
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>
