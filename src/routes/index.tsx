@@ -633,18 +633,6 @@ function Contact() {
             </a>
           </div>
         </Reveal>
-        <Reveal delay={400}>
-          <div className="mt-12 flex flex-col items-center gap-4">
-            <div className="rounded-2xl bg-white p-6 shadow-elegant border border-border/50 inline-block">
-              <img
-                src={whatsappQr.url}
-                alt="Scan to chat with Mustapha on WhatsApp"
-                className="w-56 h-56 object-contain"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
