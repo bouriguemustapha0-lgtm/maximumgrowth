@@ -590,9 +590,28 @@ function Contact() {
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto">
-            Reach out directly. I usually reply within 24 hours.
-          </p>
+          <div className="text-muted-foreground leading-relaxed max-w-xl mx-auto space-y-3 text-left sm:text-center">
+            <div className="flex items-center gap-3 sm:justify-center">
+              <Mail className="w-4 h-4 text-primary shrink-0" />
+              <span>bouriguemustapha0@gmail.com</span>
+            </div>
+            <div className="flex items-center gap-3 sm:justify-center">
+              <Phone className="w-4 h-4 text-primary shrink-0" />
+              <span>+212 699 309 986</span>
+            </div>
+            <div className="flex items-center gap-3 sm:justify-center">
+              <Globe className="w-4 h-4 text-primary shrink-0" />
+              <span>maximumgrowth.AI</span>
+            </div>
+            <div className="flex items-center gap-3 sm:justify-center">
+              <Linkedin className="w-4 h-4 text-primary shrink-0" />
+              <span>Mustapha Bourigue</span>
+            </div>
+            <div className="flex items-center gap-3 sm:justify-center">
+              <MapPin className="w-4 h-4 text-primary shrink-0" />
+              <span>Morocco</span>
+            </div>
+          </div>
         </Reveal>
         <Reveal delay={300}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
