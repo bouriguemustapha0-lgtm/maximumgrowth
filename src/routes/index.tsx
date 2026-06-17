@@ -18,6 +18,11 @@ import {
   Gauge,
   Palette,
   ExternalLink,
+  Mail,
+  Phone,
+  Globe,
+  Linkedin,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "sonner";
