@@ -643,9 +643,6 @@ function Contact() {
                 loading="lazy"
               />
             </div>
-            <p className="text-sm text-muted-foreground">
-              Scan with your WhatsApp camera to start a chat
-            </p>
           </div>
         </Reveal>
       </div>
