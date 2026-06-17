@@ -34,7 +34,7 @@ import darazurImg from "@/assets/project-darazur.jpg";
 import goldenImg from "@/assets/project-golden.jpg";
 import redflameImg from "@/assets/project-redflame.jpg";
 import mgLogo from "@/assets/mg-logo.png.asset.json";
-import whatsappQr from "@/assets/whatsapp-qr.png.asset.json";
+
 
 const portrait = portraitAsset.url;
 
