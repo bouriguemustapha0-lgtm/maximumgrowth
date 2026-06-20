@@ -45,11 +45,11 @@ const portrait = portraitAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Mustapha Bourigue — AI Web Developer & Portfolio Specialist" },
-      { name: "description", content: "Premium AI-powered portfolio websites for students, freelancers, creators & professionals. Modern design, fast delivery, conversion-focused." },
-      { property: "og:title", content: "Mustapha Bourigue — AI Web Developer" },
-      { property: "og:description", content: "AI-Powered Portfolio Websites That Make You Stand Out." },
+      meta: [
+      { title: "Mustapha Bourigue — AI Solutions for Hotels, Restaurants & Businesses" },
+      { name: "description", content: "AI-powered solutions for hotels, restaurants, and businesses. Automation, smart websites, and digital growth strategies." },
+      { property: "og:title", content: "Mustapha Bourigue — AI Solutions for Businesses" },
+      { property: "og:description", content: "AI-Powered Solutions That Help Your Business Grow." },
     ],
   }),
   component: Index,
@@ -190,14 +190,14 @@ function Hero() {
           </Reveal>
           <Reveal delay={100}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
-              AI-Powered Portfolio<br />
-              Websites That Make You{" "}
-              <span className="text-gradient">Stand Out</span>
+              AI-Powered Solutions<br />
+              for Hotels, Restaurants &{" "}
+              <span className="text-gradient">Businesses</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              I help students, freelancers, and creators build modern portfolio websites that attract opportunities, clients, and career growth.
+              I help hotels, restaurants, and all types of businesses grow smarter with AI — from automation and chatbots to high-converting websites.
             </p>
           </Reveal>
           <Reveal delay={300}>
@@ -234,7 +234,7 @@ function Hero() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm text-muted-foreground">Mustapha Bourigue</div>
-                    <div className="font-display font-semibold">AI Web Developer</div>
+                    <div className="font-display font-semibold">AI Business Specialist</div>
                   </div>
                   <span className="px-2.5 py-1 rounded-md text-[10px] font-semibold bg-primary/15 text-primary border border-primary/30">
                     MOROCCO
@@ -299,12 +299,12 @@ function About() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Crafting portfolios that <span className="text-gradient">open doors</span>.
+              Helping businesses grow with <span className="text-gradient">AI</span>.
             </h2>
           </Reveal>
           <Reveal delay={200}>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Mustapha Bourigue, an AI Web Developer passionate about helping people build a strong online presence through beautiful and high-performing portfolio websites.
+              I'm Mustapha Bourigue, an AI specialist passionate about helping hotels, restaurants, and all kinds of businesses grow with smart AI solutions and modern digital experiences.
             </p>
           </Reveal>
           <Reveal delay={300}>
