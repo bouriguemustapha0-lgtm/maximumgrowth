@@ -336,10 +336,10 @@ function About() {
 /* ---------- Services ---------- */
 function Services() {
   const services = [
-    { icon: GraduationCap, t: "Student Portfolios", d: "Professional websites for internships and university applications." },
-    { icon: Briefcase, t: "Freelancer Websites", d: "Convert visitors into paying clients with high-converting design." },
-    { icon: Video, t: "Creator Portfolios", d: "Showcase content, videos, and personal brands beautifully." },
-    { icon: Bot, t: "AI Integration", d: "Chatbots, automation, and AI-powered experiences." },
+    { icon: Bot, t: "AI Chatbots", d: "Smart chatbots that handle bookings, FAQs, and customer support 24/7." },
+    { icon: Globe, t: "Business Websites", d: "High-converting websites for hotels, restaurants, and all business types." },
+    { icon: Zap, t: "AI Automation", d: "Automate repetitive tasks — bookings, emails, scheduling, and more." },
+    { icon: Search, t: "SEO & Growth", d: "Get found on Google and turn visitors into paying customers." },
   ];
   return (
     <section id="services" className="relative py-32 bg-card/30">
@@ -353,7 +353,7 @@ function Services() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Everything you need to <span className="text-gradient">launch</span>.
+              AI solutions for every <span className="text-gradient">business</span>.
             </h2>
           </Reveal>
         </div>
