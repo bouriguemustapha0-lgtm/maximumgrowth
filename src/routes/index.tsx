@@ -275,8 +275,8 @@ function Hero() {
         <Reveal delay={200} className="lg:col-span-5">
           <div className="relative">
             <div className="absolute -inset-6 bg-[image:var(--gradient-primary)] opacity-30 blur-3xl rounded-full" />
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden glass glow-red">
-              <img src={portrait} alt="Mustapha Bourigue" className="w-full h-full object-cover" width={896} height={1152} />
+            <div className="relative rounded-2xl overflow-hidden glass glow-red">
+              <img src={portrait} alt="Mustapha Bourigue" className="w-full h-auto object-contain" width={896} height={896} />
               <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-background to-transparent">
                 <div className="flex items-center justify-between">
                   <div>
