@@ -319,6 +319,390 @@ export function useT() {
   return ctx;
 }
 
+/* ---------- Service details (rich modal content) ---------- */
+export type ServiceSection =
+  | { kind: "list"; heading: string; items: string[] }
+  | { kind: "flow"; heading: string; steps: string[] }
+  | { kind: "paragraph"; text: string }
+  | { kind: "highlight"; lines: string[] };
+
+export type ServiceDetail = {
+  emoji: string;
+  title: string;
+  tagline: string;
+  intro: string[];
+  sections: ServiceSection[];
+  closing?: string;
+};
+
+const serviceDetailsEn: ServiceDetail[] = [
+  {
+    emoji: "🏨",
+    title: "Hotel & Riad Websites",
+    tagline: "Luxury websites that reflect your hospitality",
+    intro: [
+      "Your website should do more than showcase your property — it should inspire confidence and turn visitors into guests.",
+      "We design elegant, high-end websites that capture the atmosphere of your hotel, riad, or guesthouse while making it easy for travelers to book directly.",
+      "Behind every project, we combine modern technologies, AI-powered workflows, and performance optimization to create websites that are beautiful, lightning-fast, and built to convert.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Every website includes",
+        items: [
+          "Luxury custom design",
+          "Mobile-first experience",
+          "Professional room showcases",
+          "Fast loading pages",
+          "Google Maps integration",
+          "SEO optimization",
+          "Multi-language support",
+          "Direct booking integration",
+        ],
+      },
+    ],
+    closing: "Because your website should feel as premium as the experience you offer.",
+  },
+  {
+    emoji: "📅",
+    title: "Direct Booking System",
+    tagline: "Turn website visitors into paying guests",
+    intro: [
+      "Reduce your dependence on booking platforms by allowing guests to reserve directly through your own website.",
+      "We build booking systems tailored to how your property operates — simple for your guests and effortless for you.",
+    ],
+    sections: [
+      {
+        kind: "flow",
+        heading: "Your booking journey",
+        steps: [
+          "Guest visits your website",
+          "Selects dates and room",
+          "Completes reservation",
+          "Pays securely online (optional)",
+          "Reservation confirmed instantly",
+          "You receive the booking immediately",
+        ],
+      },
+      {
+        kind: "paragraph",
+        text: "Every booking engine is customized around your pricing, room types, availability, and reservation workflow.",
+      },
+      {
+        kind: "highlight",
+        lines: ["More direct bookings.", "Lower OTA commissions.", "A smoother guest experience."],
+      },
+    ],
+  },
+  {
+    emoji: "💳",
+    title: "Secure Online Payments",
+    tagline: "Secure payments. Trusted technology. Complete peace of mind.",
+    intro: [
+      "Give your guests the confidence to reserve their stay online using secure payment providers trusted by hospitality businesses worldwide.",
+      "We integrate your website with the payment solution that best fits your property and, when needed, connect it to a trusted Channel Manager. This creates one seamless booking experience for both you and your guests.",
+    ],
+    sections: [
+      {
+        kind: "flow",
+        heading: "How it works",
+        steps: [
+          "A guest chooses a room and travel dates.",
+          "They complete their reservation through your website.",
+          "Payment is processed securely.",
+          "The reservation is confirmed instantly.",
+          "Your availability updates automatically.",
+          "You receive the reservation via WhatsApp and email.",
+        ],
+      },
+      {
+        kind: "paragraph",
+        text: "If your property is listed on Booking.com, Airbnb, Expedia, or other platforms, your Channel Manager keeps everything synchronized in real time.",
+      },
+      {
+        kind: "list",
+        heading: "That means",
+        items: [
+          "No double bookings",
+          "No manual calendar updates",
+          "No confusion",
+          "One centralized reservation system",
+        ],
+      },
+    ],
+    closing:
+      "Most importantly, your website becomes your own direct booking channel — reducing OTA commissions while offering guests a professional booking experience they can trust.",
+  },
+  {
+    emoji: "🔍",
+    title: "SEO & Google Visibility",
+    tagline: "Help travelers discover your property",
+    intro: [
+      "Having a beautiful website is only the beginning.",
+      "We optimize your website so travelers searching for accommodation in your destination can discover your property before your competitors.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Our SEO includes",
+        items: [
+          "Fast loading performance",
+          "Google-friendly structure",
+          "Local SEO optimization",
+          "Optimized images",
+          "Hotel schema markup",
+          "Mobile optimization",
+          "Google Maps integration",
+          "AI-assisted content optimization",
+        ],
+      },
+    ],
+    closing: "More visibility means more qualified visitors — and more opportunities for direct bookings.",
+  },
+  {
+    emoji: "💬",
+    title: "WhatsApp & Reservation Notifications",
+    tagline: "Stay connected to every reservation",
+    intro: [
+      "Never miss a booking.",
+      "Every reservation made through your website is automatically delivered to you through WhatsApp and email, keeping you informed wherever you are.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Instant notifications include",
+        items: [
+          "Guest information",
+          "Check-in & check-out dates",
+          "Room booked",
+          "Number of guests",
+          "Payment confirmation",
+          "Reservation reference",
+        ],
+      },
+      {
+        kind: "paragraph",
+        text: "Whether you're at reception or away from the property, you'll always know when a new reservation arrives.",
+      },
+    ],
+    closing: "Fast, reliable, and fully automated.",
+  },
+  {
+    emoji: "🤖",
+    title: "Guest Experience Automation",
+    tagline: "Let AI handle the repetitive work",
+    intro: [
+      "Deliver exceptional hospitality while reducing the time spent on repetitive tasks.",
+      "We integrate AI-powered automations that help you respond faster, streamline operations, and create a better guest experience.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Automations can include",
+        items: [
+          "Instant guest replies",
+          "Booking confirmations",
+          "Frequently asked questions",
+          "Follow-up messages",
+          "Review requests",
+          "Inquiry management",
+          "Smart workflows",
+        ],
+      },
+    ],
+    closing:
+      "Our goal isn't to replace your hospitality. It's to give you more time to focus on what matters most — your guests.",
+  },
+];
+
+const serviceDetailsFr: ServiceDetail[] = [
+  {
+    emoji: "🏨",
+    title: "Sites Hôtels & Riads",
+    tagline: "Des sites de luxe à l'image de votre hospitalité",
+    intro: [
+      "Votre site doit faire plus que présenter votre établissement — il doit inspirer confiance et transformer les visiteurs en clients.",
+      "Nous concevons des sites élégants et haut de gamme qui capturent l'atmosphère de votre hôtel, riad ou maison d'hôtes, tout en facilitant la réservation directe pour vos voyageurs.",
+      "Derrière chaque projet, nous combinons technologies modernes, workflows IA et optimisation des performances pour créer des sites beaux, ultra-rapides et conçus pour convertir.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Chaque site inclut",
+        items: [
+          "Design luxe sur mesure",
+          "Expérience mobile-first",
+          "Présentation professionnelle des chambres",
+          "Pages ultra-rapides",
+          "Intégration Google Maps",
+          "Optimisation SEO",
+          "Support multilingue",
+          "Réservation directe intégrée",
+        ],
+      },
+    ],
+    closing: "Parce que votre site doit être aussi premium que l'expérience que vous offrez.",
+  },
+  {
+    emoji: "📅",
+    title: "Système de réservation directe",
+    tagline: "Transformez les visiteurs en clients payants",
+    intro: [
+      "Réduisez votre dépendance aux plateformes en permettant à vos clients de réserver directement sur votre propre site.",
+      "Nous concevons des systèmes de réservation adaptés au fonctionnement de votre établissement — simples pour vos clients, sans effort pour vous.",
+    ],
+    sections: [
+      {
+        kind: "flow",
+        heading: "Le parcours de réservation",
+        steps: [
+          "Le client visite votre site",
+          "Il choisit les dates et la chambre",
+          "Il finalise sa réservation",
+          "Il paie en ligne en toute sécurité (optionnel)",
+          "Réservation confirmée instantanément",
+          "Vous recevez la réservation immédiatement",
+        ],
+      },
+      {
+        kind: "paragraph",
+        text: "Chaque moteur de réservation est personnalisé selon vos tarifs, types de chambres, disponibilités et flux de réservation.",
+      },
+      {
+        kind: "highlight",
+        lines: [
+          "Plus de réservations directes.",
+          "Moins de commissions OTA.",
+          "Une expérience client plus fluide.",
+        ],
+      },
+    ],
+  },
+  {
+    emoji: "💳",
+    title: "Paiements en ligne sécurisés",
+    tagline: "Paiements sécurisés. Technologie de confiance. Sérénité totale.",
+    intro: [
+      "Offrez à vos clients la confiance nécessaire pour réserver en ligne, grâce à des prestataires de paiement reconnus dans l'hôtellerie mondiale.",
+      "Nous intégrons à votre site la solution de paiement la plus adaptée à votre établissement et, si besoin, la connectons à un Channel Manager de confiance. Vous obtenez une expérience de réservation fluide, pour vous comme pour vos clients.",
+    ],
+    sections: [
+      {
+        kind: "flow",
+        heading: "Comment ça marche",
+        steps: [
+          "Le client choisit une chambre et ses dates.",
+          "Il finalise sa réservation via votre site.",
+          "Le paiement est traité en toute sécurité.",
+          "La réservation est confirmée instantanément.",
+          "Vos disponibilités se mettent à jour automatiquement.",
+          "Vous recevez la réservation par WhatsApp et email.",
+        ],
+      },
+      {
+        kind: "paragraph",
+        text: "Si votre établissement est listé sur Booking.com, Airbnb, Expedia ou d'autres plateformes, votre Channel Manager synchronise tout en temps réel.",
+      },
+      {
+        kind: "list",
+        heading: "Cela signifie",
+        items: [
+          "Aucune double réservation",
+          "Aucune mise à jour manuelle du calendrier",
+          "Aucune confusion",
+          "Un système de réservation centralisé",
+        ],
+      },
+    ],
+    closing:
+      "Surtout, votre site devient votre propre canal de réservation directe — vous réduisez les commissions OTA tout en offrant une expérience de réservation professionnelle et rassurante.",
+  },
+  {
+    emoji: "🔍",
+    title: "SEO & visibilité Google",
+    tagline: "Aidez les voyageurs à découvrir votre établissement",
+    intro: [
+      "Avoir un beau site n'est que le début.",
+      "Nous optimisons votre site pour que les voyageurs qui cherchent un hébergement dans votre destination découvrent votre établissement avant vos concurrents.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Notre SEO inclut",
+        items: [
+          "Performances de chargement rapides",
+          "Structure adaptée à Google",
+          "SEO local optimisé",
+          "Images optimisées",
+          "Balisage schema pour hôtels",
+          "Optimisation mobile",
+          "Intégration Google Maps",
+          "Optimisation de contenu assistée par IA",
+        ],
+      },
+    ],
+    closing: "Plus de visibilité, plus de visiteurs qualifiés — et plus d'opportunités de réservations directes.",
+  },
+  {
+    emoji: "💬",
+    title: "Notifications WhatsApp & réservation",
+    tagline: "Restez connecté à chaque réservation",
+    intro: [
+      "Ne manquez plus jamais une réservation.",
+      "Chaque réservation faite sur votre site vous est automatiquement transmise par WhatsApp et email, où que vous soyez.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Les notifications instantanées incluent",
+        items: [
+          "Informations du client",
+          "Dates d'arrivée et de départ",
+          "Chambre réservée",
+          "Nombre de voyageurs",
+          "Confirmation de paiement",
+          "Référence de réservation",
+        ],
+      },
+      {
+        kind: "paragraph",
+        text: "Que vous soyez à la réception ou en déplacement, vous saurez toujours qu'une nouvelle réservation est arrivée.",
+      },
+    ],
+    closing: "Rapide, fiable et entièrement automatisé.",
+  },
+  {
+    emoji: "🤖",
+    title: "Automatisation de l'expérience client",
+    tagline: "Laissez l'IA gérer les tâches répétitives",
+    intro: [
+      "Offrez une hospitalité exceptionnelle tout en réduisant le temps passé sur les tâches répétitives.",
+      "Nous intégrons des automatisations pilotées par l'IA qui vous aident à répondre plus vite, à fluidifier vos opérations et à améliorer l'expérience client.",
+    ],
+    sections: [
+      {
+        kind: "list",
+        heading: "Les automatisations possibles",
+        items: [
+          "Réponses instantanées aux clients",
+          "Confirmations de réservation",
+          "Questions fréquentes",
+          "Messages de suivi",
+          "Demandes d'avis",
+          "Gestion des demandes",
+          "Workflows intelligents",
+        ],
+      },
+    ],
+    closing:
+      "L'objectif n'est pas de remplacer votre hospitalité, mais de vous donner plus de temps pour l'essentiel — vos clients.",
+  },
+];
+
+export function getServiceDetails(lang: Lang): ServiceDetail[] {
+  return lang === "fr" ? serviceDetailsFr : serviceDetailsEn;
+}
+
 export function LangToggle({ className = "" }: { className?: string }) {
   const { lang, setLang } = useT();
   const isFr = lang === "fr";
