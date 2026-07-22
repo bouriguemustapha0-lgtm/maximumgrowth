@@ -34,7 +34,7 @@ import { Toaster } from "sonner";
 
 import portraitAsset from "@/assets/mustapha-portrait.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
-import hotelImg from "@/assets/project-hotel.jpg";
+import bougainvillaImg from "@/assets/project-bougainvilla.jpg";
 import darazurImg from "@/assets/project-darazur.jpg";
 import goldenImg from "@/assets/project-golden.jpg";
 import redflameImg from "@/assets/project-redflame.jpg";
@@ -392,7 +392,7 @@ function Services() {
 /* ---------- Portfolio ---------- */
 function Portfolio() {
   const projects = [
-    { img: hotelImg, title: "Hotel Agnaou", desc: "Moroccan guesthouse website with booking integration.", tags: ["Hospitality", "Next.js"], demoUrl: "https://hotelagnaoue.lovable.app" },
+    { img: bougainvillaImg, title: "Bougainvilla Retreat", desc: "Guesthouse with pool between Casablanca and Mohammedia — booking & rooms.", tags: ["Hospitality", "Booking"], demoUrl: "https://www.bougainvillaretreat.com/" },
     { img: darazurImg, title: "Dar Azur", desc: "Luxury 17th-century riad website with spa & suites.", tags: ["Hospitality", "Tailwind"], demoUrl: "https://darazur.lovable.app" },
     { img: goldenImg, title: "Maison Aurelle", desc: "Five-star luxury hotel showcase with room bookings.", tags: ["Hospitality", "React"], demoUrl: "https://golden-suite-showcase.lovable.app" },
     { img: redflameImg, title: "Red Flame", desc: "Fine dining steakhouse with menu & reservations.", tags: ["Restaurant", "AI"], demoUrl: "https://redflame.lovable.app" },
