@@ -28,6 +28,8 @@ import {
   Copy,
   Check,
   Calendar,
+  Menu,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "sonner";
@@ -113,12 +115,18 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 /* ---------- Nav ---------- */
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
     h();
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
+  useEffect(() => {
+    if (mobileOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
   const links = [
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
@@ -127,7 +135,7 @@ function Nav() {
     { href: "#contact", label: "Contact" },
   ];
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "backdrop-blur-xl bg-background/70 border-b border-border" : ""}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled || mobileOpen ? "backdrop-blur-xl bg-background/80 border-b border-border" : ""}`}>
       <nav className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
           <img src={mgLogo.url} alt="MG — Mustapha Bourigue" width={40} height={28} className="h-7 w-auto" />
@@ -140,12 +148,47 @@ function Nav() {
             </li>
           ))}
         </ul>
-        <a href="#contact">
-          <Button variant="hero" size="sm" className="hidden md:inline-flex">
-            Book a Call <ArrowRight />
-          </Button>
-        </a>
+        <div className="hidden md:flex items-center gap-4">
+          <a href="#contact">
+            <Button variant="hero" size="sm">
+              Book a Call <ArrowRight />
+            </Button>
+          </a>
+        </div>
+        <button
+          className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl glass text-foreground"
+          onClick={() => setMobileOpen(o => !o)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+        >
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-background/95 backdrop-blur-xl border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6">
+            <ul className="flex flex-col gap-4 text-lg font-medium">
+              {links.map(l => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a href="#contact" onClick={() => setMobileOpen(false)}>
+              <Button variant="hero" size="lg" className="w-full">
+                Book a Free Call <ArrowRight />
+              </Button>
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
@@ -232,8 +275,8 @@ function Hero() {
         <Reveal delay={200} className="lg:col-span-5">
           <div className="relative">
             <div className="absolute -inset-6 bg-[image:var(--gradient-primary)] opacity-30 blur-3xl rounded-full" />
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden glass glow-red">
-              <img src={portrait} alt="Mustapha Bourigue" className="w-full h-full object-cover" width={896} height={1152} />
+            <div className="relative rounded-2xl overflow-hidden glass glow-red">
+              <img src={portrait} alt="Mustapha Bourigue" className="w-full h-auto object-contain" width={896} height={896} />
               <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-background to-transparent">
                 <div className="flex items-center justify-between">
                   <div>
