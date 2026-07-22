@@ -168,16 +168,15 @@ function Nav() {
       {mobileOpen && (
         <div className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-background/95 backdrop-blur-xl border-t border-border">
           <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6">
-            <ul className="flex flex-col gap-4 text-lg font-medium">
+            <ul className="flex flex-col rounded-2xl bg-card border border-border p-2 text-lg font-medium shadow-lg">
               {links.map(l => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between rounded-xl bg-card border border-border px-5 py-4 text-foreground shadow-sm hover:bg-primary/10 hover:border-primary/30 transition-colors"
+                    className="block rounded-xl px-4 py-3.5 text-muted-foreground hover:bg-primary/10 hover:text-foreground transition-colors"
                   >
                     {l.label}
-                    <ArrowRight className="h-4 w-4 text-muted-foreground" />
                   </a>
                 </li>
               ))}
