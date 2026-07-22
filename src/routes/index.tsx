@@ -46,10 +46,12 @@ const portrait = portraitAsset.url;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mustapha Bourigue — AI Web Developer & Portfolio Specialist" },
-      { name: "description", content: "Premium AI-powered portfolio websites for students, freelancers, creators & professionals. Modern design, fast delivery, conversion-focused." },
-      { property: "og:title", content: "Mustapha Bourigue — AI Web Developer" },
-      { property: "og:description", content: "AI-Powered Portfolio Websites That Make You Stand Out." },
+      { title: "Mustapha Bourigue — Hotel & Riad Website Designer" },
+      { name: "description", content: "Websites for guesthouses, riads and boutique hotels. Direct booking, secure payments, SEO and WhatsApp integration — more direct bookings, less commission." },
+      { property: "og:title", content: "Websites That Bring Hotels More Direct Bookings" },
+      { property: "og:description", content: "Modern hospitality websites with direct booking, secure payments, SEO and WhatsApp integration." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
