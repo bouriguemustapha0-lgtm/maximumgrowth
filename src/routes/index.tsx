@@ -46,10 +46,12 @@ const portrait = portraitAsset.url;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mustapha Bourigue — AI Web Developer & Portfolio Specialist" },
-      { name: "description", content: "Premium AI-powered portfolio websites for students, freelancers, creators & professionals. Modern design, fast delivery, conversion-focused." },
-      { property: "og:title", content: "Mustapha Bourigue — AI Web Developer" },
-      { property: "og:description", content: "AI-Powered Portfolio Websites That Make You Stand Out." },
+      { title: "Mustapha Bourigue — Hotel & Riad Website Designer" },
+      { name: "description", content: "Websites for guesthouses, riads and boutique hotels. Direct booking, secure payments, SEO and WhatsApp integration — more direct bookings, less commission." },
+      { property: "og:title", content: "Websites That Bring Hotels More Direct Bookings" },
+      { property: "og:description", content: "Modern hospitality websites with direct booking, secure payments, SEO and WhatsApp integration." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -185,25 +187,24 @@ function Hero() {
                 <span className="absolute inset-0 rounded-full bg-primary animate-pulse-glow" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-              Available for new projects · Q2 2026
+              Available for New Hospitality Projects · Q2 2026
             </div>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
-              AI-Powered Portfolio<br />
-              Websites That Make You{" "}
-              <span className="text-gradient">Stand Out</span>
+              Websites That Bring{" "}
+              <span className="text-gradient">Hotels More Direct Bookings</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              I help students, freelancers, and creators build modern portfolio websites that attract opportunities, clients, and career growth.
+              I help guesthouses, riads, and hotels build a professional online presence that increases direct bookings and reduces reliance on booking platforms.
             </p>
           </Reveal>
           <Reveal delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact"><Button variant="hero" size="lg">Book a Free Consultation <ArrowRight /></Button></a>
-              <a href="#work"><Button variant="heroOutline" size="lg">View My Work</Button></a>
+              <a href="#work"><Button variant="heroOutline" size="lg">View Hospitality Projects</Button></a>
             </div>
           </Reveal>
           <Reveal delay={400}>
@@ -219,7 +220,7 @@ function Hero() {
                 <div className="flex items-center gap-0.5 text-primary">
                   {[...Array(5)].map((_,i)=><Star key={i} className="w-3.5 h-3.5 fill-current" />)}
                 </div>
-                <div className="text-xs">Trusted by creators worldwide</div>
+                <div className="text-xs">Trusted by hospitality clients</div>
               </div>
             </div>
           </Reveal>
@@ -234,7 +235,7 @@ function Hero() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm text-muted-foreground">Mustapha Bourigue</div>
-                    <div className="font-display font-semibold">AI Web Developer</div>
+                    <div className="font-display font-semibold">Hotel & Riad Web Designer</div>
                   </div>
                   <span className="px-2.5 py-1 rounded-md text-[10px] font-semibold bg-primary/15 text-primary border border-primary/30">
                     MOROCCO
@@ -299,21 +300,26 @@ function About() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Crafting portfolios that <span className="text-gradient">open doors</span>.
+              Helping hospitality businesses <span className="text-gradient">grow online</span>.
             </h2>
           </Reveal>
           <Reveal delay={200}>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Mustapha Bourigue, an AI Web Developer passionate about helping people build a strong online presence through beautiful and high-performing portfolio websites.
+              I'm Mustapha Bourigue, an AI Web Developer specializing in websites for guesthouses, riads, boutique hotels, and hospitality businesses.
+            </p>
+          </Reveal>
+          <Reveal delay={250}>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I create fast, modern websites with online booking, secure payments, SEO, and WhatsApp integration so guests can book directly from your website.
             </p>
           </Reveal>
           <Reveal delay={300}>
             <ul className="grid sm:grid-cols-2 gap-4 pt-2">
               {[
-                { icon: Rocket, t: "Fast Delivery", d: "Launch in days, not months." },
-                { icon: Code2, t: "Modern Stack", d: "React, Next.js, Tailwind CSS." },
-                { icon: Bot, t: "AI-Powered", d: "Smarter workflows, better results." },
-                { icon: Users, t: "User-Focused", d: "Designed to convert visitors." },
+                { icon: Calendar, t: "Direct Bookings", d: "Guests reserve straight from your site." },
+                { icon: Gauge, t: "Fast & Modern", d: "Optimized for speed and mobile." },
+                { icon: Search, t: "SEO Ready", d: "Found by travelers on Google." },
+                { icon: MessageCircle, t: "WhatsApp Integrated", d: "Instant guest communication." },
               ].map(({ icon: I, t, d }) => (
                 <li key={t} className="flex gap-3 p-4 rounded-xl glass">
                   <div className="grid place-items-center w-10 h-10 rounded-lg bg-primary/15 text-primary shrink-0">
@@ -336,10 +342,12 @@ function About() {
 /* ---------- Services ---------- */
 function Services() {
   const services = [
-    { icon: GraduationCap, t: "Student Portfolios", d: "Professional websites for internships and university applications." },
-    { icon: Briefcase, t: "Freelancer Websites", d: "Convert visitors into paying clients with high-converting design." },
-    { icon: Video, t: "Creator Portfolios", d: "Showcase content, videos, and personal brands beautifully." },
-    { icon: Bot, t: "AI Integration", d: "Chatbots, automation, and AI-powered experiences." },
+    { icon: Palette, t: "Hotel & Riad Websites", d: "Elegant, brand-driven websites for guesthouses, riads, and boutique hotels." },
+    { icon: Calendar, t: "Direct Booking Systems", d: "Let guests book rooms directly — no more platform commissions." },
+    { icon: Rocket, t: "Secure Online Payments", d: "Accept card payments and deposits safely on your own site." },
+    { icon: Search, t: "SEO & Google Visibility", d: "Rank on Google so travelers find you before your competitors." },
+    { icon: MessageCircle, t: "WhatsApp Booking Integration", d: "Instant chat & inquiries — the way guests prefer to book today." },
+    { icon: Bot, t: "AI Automation", d: "Automated responses, guest workflows, and smart follow-ups." },
   ];
   return (
     <section id="services" className="relative py-32 bg-card/30">
@@ -353,11 +361,11 @@ function Services() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Everything you need to <span className="text-gradient">launch</span>.
+              Everything hospitality businesses need to <span className="text-gradient">grow direct bookings</span>.
             </h2>
           </Reveal>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
             <Reveal key={s.t} delay={i * 100}>
               <div className="group relative h-full rounded-2xl glass p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40">
@@ -455,15 +463,15 @@ function Portfolio() {
   );
 }
 
-/* ---------- Stats ---------- */
+/* ---------- Why Choose Me ---------- */
 function Stats() {
-  const stats = [
-    { icon: Smartphone, n: 100, s: "%", l: "Responsive" },
-    { icon: Search, n: 95, s: "+", l: "SEO Score" },
-    { icon: Gauge, n: 98, s: "/100", l: "Performance" },
-    { icon: Bot, n: 50, s: "+", l: "AI Workflows" },
-    { icon: Palette, n: 25, s: "+", l: "Designs Shipped" },
-    { icon: Rocket, n: 3, s: "x", l: "Faster Launch" },
+  const reasons = [
+    { icon: Calendar, t: "More Direct Bookings", d: "Convert visitors into guests booking straight from your website." },
+    { icon: Rocket, t: "Lower Commission Costs", d: "Reduce dependence on Booking.com and Airbnb fees." },
+    { icon: Smartphone, t: "Mobile-First Design", d: "Optimized for travelers browsing on their phones." },
+    { icon: Search, t: "SEO Optimized", d: "Rank higher on Google for your city, riad, or hotel niche." },
+    { icon: MessageCircle, t: "WhatsApp Integrated", d: "Guests reach you instantly — the way they prefer." },
+    { icon: Bot, t: "Built with AI", d: "Faster delivery, smarter workflows, better performance." },
   ];
   return (
     <section className="relative py-32 bg-card/30 overflow-hidden">
@@ -472,20 +480,20 @@ function Stats() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Why Work With Me
+              <Sparkles className="w-3.5 h-3.5" /> Why Hospitality Businesses Choose Me
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold">Built for <span className="text-gradient">results</span>.</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">Built for <span className="text-gradient">direct bookings</span>.</h2>
           </div>
         </Reveal>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {stats.map((st, i) => (
-            <Reveal key={st.l} delay={i * 60}>
-              <div className="glass rounded-2xl p-6 text-center hover:border-primary/40 transition-all hover:-translate-y-1">
-                <st.icon className="w-5 h-5 text-primary mx-auto mb-3" />
-                <div className="text-3xl font-display font-bold text-gradient">
-                  <Counter to={st.n} suffix={st.s} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {reasons.map((r, i) => (
+            <Reveal key={r.t} delay={i * 80}>
+              <div className="glass rounded-2xl p-6 hover:border-primary/40 transition-all hover:-translate-y-1 h-full">
+                <div className="grid place-items-center w-11 h-11 rounded-xl bg-primary/15 text-primary mb-4">
+                  <r.icon className="w-5 h-5" />
                 </div>
-                <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">{st.l}</div>
+                <h3 className="font-display font-semibold text-lg mb-1.5">{r.t}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{r.d}</p>
               </div>
             </Reveal>
           ))}
@@ -498,9 +506,9 @@ function Stats() {
 /* ---------- Testimonials ---------- */
 function Testimonials() {
   const items = [
-    { name: "Sara El Amrani", role: "Engineering Student", quote: "My portfolio landed me three internship interviews in the first month. Mustapha completely understood what I needed." },
-    { name: "Yassine Karim", role: "Content Creator", quote: "Premium quality, fast delivery, and a polished look. My audience and brand deals doubled after launch." },
-    { name: "Lina Bouazza", role: "Freelance Designer", quote: "The website pays for itself every month. Clean, modern, and built to convert. Highly recommended." },
+    { name: "Karim Idrissi", role: "Riad Owner, Marrakech", quote: "Direct bookings from our website tripled in three months. The design finally matches the experience we offer to our guests." },
+    { name: "Nadia Benali", role: "Guesthouse Manager, Essaouira", quote: "Guests now book and pay directly, and WhatsApp integration made communication so simple. Mustapha understood our needs from day one." },
+    { name: "Omar Tazi", role: "Boutique Hotel Owner", quote: "Beautiful, fast, and built to convert. Our commission costs dropped and Google finally sends us qualified travelers." },
   ];
   return (
     <section className="relative py-32">
@@ -647,12 +655,12 @@ function Contact() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Let's build something <span className="text-gradient">amazing</span> together.
+              Get more <span className="text-gradient">direct bookings</span>.
             </h2>
           </Reveal>
           <Reveal delay={150}>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Have a project in mind or want to discuss how AI can accelerate your growth? Reach out — I usually reply within 24 hours.
+              Let's talk about your riad, guesthouse, or hotel and how a modern website can grow your direct bookings. I usually reply within 24 hours.
             </p>
           </Reveal>
         </div>
