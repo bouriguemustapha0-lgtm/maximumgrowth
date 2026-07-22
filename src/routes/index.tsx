@@ -665,13 +665,13 @@ function ContactRow({
     } catch {}
   };
   const content = (
-    <div className="flex items-center gap-4 rounded-xl border border-border/60 bg-card/40 backdrop-blur px-4 py-3 hover:border-primary/50 hover:bg-card/70 transition-all">
+    <div className="flex items-center gap-3 sm:gap-4 rounded-xl border border-border/60 bg-card/40 backdrop-blur px-3 sm:px-4 py-3 hover:border-primary/50 hover:bg-card/70 transition-all">
       <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
         <Icon className="w-4 h-4" />
       </div>
       <div className="flex-1 min-w-0 text-left">
         <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/80 font-semibold">{label}</div>
-        <div className="text-sm font-medium text-foreground truncate">{value}</div>
+        <div className="text-sm font-medium text-foreground break-all sm:break-normal sm:truncate">{value}</div>
       </div>
       {copyable && (
         <button
@@ -724,9 +724,9 @@ function Contact() {
         <div className="grid lg:grid-cols-5 gap-6 lg:gap-8">
           {/* Left: contact details */}
           <Reveal delay={200} className="lg:col-span-3">
-            <div className="relative rounded-2xl border border-border bg-card/30 backdrop-blur-xl p-6 sm:p-8 h-full">
-              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-              <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
+            <div className="relative rounded-2xl sm:border sm:border-border sm:bg-card/30 sm:backdrop-blur-xl sm:p-8 p-0 h-full">
+              <div className="hidden sm:block absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+              <h3 className="hidden sm:block text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
                 Contact details
               </h3>
               <div className="grid sm:grid-cols-2 gap-3">
