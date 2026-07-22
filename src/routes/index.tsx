@@ -20,13 +20,8 @@ import {
   ExternalLink,
   Mail,
   Phone,
-  Globe,
-  Linkedin,
-  MapPin,
   MessageCircle,
   Instagram,
-  Copy,
-  Check,
   Calendar,
   Menu,
   X,
@@ -643,60 +638,6 @@ function Process() {
 }
 
 /* ---------- Contact ---------- */
-function ContactRow({
-  icon: Icon,
-  label,
-  value,
-  href,
-  copyable,
-}: {
-  icon: typeof Mail;
-  label: string;
-  value: string;
-  href?: string;
-  copyable?: boolean;
-}) {
-  const [copied, setCopied] = useState(false);
-  const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {}
-  };
-  const content = (
-    <div className="flex items-center gap-3 sm:gap-4 rounded-xl border border-border/60 bg-card/40 backdrop-blur px-3 sm:px-4 py-3 hover:border-primary/50 hover:bg-card/70 transition-all">
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
-        <Icon className="w-4 h-4" />
-      </div>
-      <div className="flex-1 min-w-0 text-left">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/80 font-semibold">{label}</div>
-        <div className="text-sm font-medium text-foreground break-all sm:break-normal sm:truncate">{value}</div>
-      </div>
-      {copyable && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onCopy();
-          }}
-          aria-label={`Copy ${label}`}
-          className="text-muted-foreground hover:text-primary transition-colors shrink-0"
-        >
-          {copied ? <Check className="w-4 h-4 text-primary" /> : <Copy className="w-4 h-4" />}
-        </button>
-      )}
-    </div>
-  );
-  return href ? (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="block">
-      {content}
-    </a>
-  ) : (
-    content
-  );
-}
-
 function Contact() {
   return (
     <section id="contact" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20">
@@ -721,18 +662,13 @@ function Contact() {
           </Reveal>
         </div>
 
-        {/* Primary CTA — WhatsApp */}
+        {/* Primary CTA — Book a call */}
         <Reveal delay={200}>
-          <a
-            href="https://wa.me/212699309986?text=Hi%20Mustapha%2C%20I'd%20like%20to%20talk%20about%20a%20website%20for%20my%20hotel%2Friad."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative block overflow-hidden rounded-3xl border border-primary/50 bg-gradient-to-br from-primary/25 via-primary/10 to-transparent backdrop-blur-xl p-6 sm:p-8 hover:border-primary transition-all shadow-xl shadow-primary/10 hover:shadow-primary/30"
-          >
+          <div className="group relative block overflow-hidden rounded-3xl border border-primary/50 bg-gradient-to-br from-primary/25 via-primary/10 to-transparent backdrop-blur-xl p-6 sm:p-8 hover:border-primary transition-all shadow-xl shadow-primary/10 hover:shadow-primary/30">
             <div className="absolute -right-10 -top-10 w-56 h-56 rounded-full bg-primary/20 blur-3xl group-hover:bg-primary/30 transition-colors" />
             <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6">
               <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-primary-foreground shrink-0 shadow-lg shadow-primary/40">
-                <MessageCircle className="w-7 h-7" />
+                <Phone className="w-7 h-7" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-2">
@@ -743,20 +679,35 @@ function Contact() {
                   Fastest reply
                 </div>
                 <div className="text-2xl sm:text-3xl font-bold text-foreground leading-tight">
-                  Chat on WhatsApp
+                  Book a Free Call
                 </div>
                 <div className="text-sm sm:text-base text-muted-foreground mt-1">
                   +212 699 309 986 · Free 15-min consultation, no commitment.
+                </div>
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <a
+                    href="https://wa.me/212699309986?text=Hi%20Mustapha%2C%20I'd%20like%20to%20talk%20about%20a%20website%20for%20my%20hotel%2Friad."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp
+                  </a>
+                  <a
+                    href="tel:+212699309986"
+                    className="inline-flex items-center gap-2 rounded-full border border-primary/50 text-primary px-4 py-2 text-sm font-semibold hover:bg-primary/10 transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call directly
+                  </a>
                 </div>
               </div>
               <div className="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground shrink-0 group-hover:translate-x-1 transition-transform shadow-lg shadow-primary/40">
                 <ArrowRight className="w-5 h-5" />
               </div>
-              <Button variant="hero" size="lg" className="sm:hidden w-full pointer-events-none">
-                Open WhatsApp <ArrowRight />
-              </Button>
             </div>
-          </a>
+          </div>
         </Reveal>
 
         {/* Secondary channels */}
@@ -795,20 +746,35 @@ function Contact() {
           </Reveal>
         </div>
 
-        {/* Contact details */}
+        {/* Extra info — not essential */}
         <Reveal delay={350}>
-          <div className="mt-6 relative rounded-2xl sm:border sm:border-border sm:bg-card/30 sm:backdrop-blur-xl sm:p-8 p-0">
-            <div className="hidden sm:block absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-            <h3 className="hidden sm:block text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
-              Contact details
+          <div className="mt-8">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground/70 mb-4 text-center">
+              Additional info
             </h3>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <ContactRow icon={Phone} label="Phone" value="+212 699 309 986" href="tel:+212699309986" copyable />
-              <ContactRow icon={Mail} label="Email" value="bouriguemustapha0@gmail.com" href="mailto:bouriguemustapha0@gmail.com" copyable />
-              <ContactRow icon={Globe} label="Website" value="maximumgrowth.AI" />
-              <ContactRow icon={Linkedin} label="LinkedIn" value="Mustapha Bourigue" href="https://www.linkedin.com/in/mustapha-bourigue" />
-              <ContactRow icon={MapPin} label="Based in" value="Morocco" />
-              <ContactRow icon={Calendar} label="Availability" value="Open to new projects" />
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              <a
+                href="mailto:bouriguemustapha0@gmail.com"
+                className="hover:text-primary transition-colors"
+                aria-label="Email"
+              >
+                bouriguemustapha0@gmail.com
+              </a>
+              <span className="hidden sm:inline text-border">·</span>
+              <span>maximumgrowth.AI</span>
+              <span className="hidden sm:inline text-border">·</span>
+              <a
+                href="https://www.linkedin.com/in/mustapha-bourigue"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                LinkedIn
+              </a>
+              <span className="hidden sm:inline text-border">·</span>
+              <span>Morocco</span>
+              <span className="hidden sm:inline text-border">·</span>
+              <span>Open to new projects</span>
             </div>
           </div>
         </Reveal>
