@@ -28,6 +28,8 @@ import {
   Copy,
   Check,
   Calendar,
+  Menu,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "sonner";
