@@ -34,6 +34,7 @@ import { Toaster } from "sonner";
 
 import portraitAsset from "@/assets/mustapha-portrait.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
+import velsatisImg from "@/assets/project-velsatis.jpg";
 import bougainvillaImg from "@/assets/project-bougainvilla.jpg";
 import darazurImg from "@/assets/project-darazur.jpg";
 import goldenImg from "@/assets/project-golden.jpg";
@@ -392,6 +393,7 @@ function Services() {
 /* ---------- Portfolio ---------- */
 function Portfolio() {
   const projects = [
+    { img: velsatisImg, title: "Velsatis Hotel", desc: "Boutique hotel, café & restaurant on Boulevard Mohamed V in Beni Mellal.", tags: ["Hospitality", "Hotel"], demoUrl: "https://www.velsatishotel.com/" },
     { img: bougainvillaImg, title: "Bougainvilla Retreat", desc: "Guesthouse with pool between Casablanca and Mohammedia — booking & rooms.", tags: ["Hospitality", "Booking"], demoUrl: "https://www.bougainvillaretreat.com/" },
     { img: darazurImg, title: "Dar Azur", desc: "Luxury 17th-century riad website with spa & suites.", tags: ["Hospitality", "Tailwind"], demoUrl: "https://darazur.lovable.app" },
     { img: goldenImg, title: "Maison Aurelle", desc: "Five-star luxury hotel showcase with room bookings.", tags: ["Hospitality", "React"], demoUrl: "https://golden-suite-showcase.lovable.app" },
