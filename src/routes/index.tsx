@@ -638,60 +638,6 @@ function Process() {
 }
 
 /* ---------- Contact ---------- */
-function ContactRow({
-  icon: Icon,
-  label,
-  value,
-  href,
-  copyable,
-}: {
-  icon: typeof Mail;
-  label: string;
-  value: string;
-  href?: string;
-  copyable?: boolean;
-}) {
-  const [copied, setCopied] = useState(false);
-  const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {}
-  };
-  const content = (
-    <div className="flex items-center gap-3 sm:gap-4 rounded-xl border border-border/60 bg-card/40 backdrop-blur px-3 sm:px-4 py-3 hover:border-primary/50 hover:bg-card/70 transition-all">
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
-        <Icon className="w-4 h-4" />
-      </div>
-      <div className="flex-1 min-w-0 text-left">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/80 font-semibold">{label}</div>
-        <div className="text-sm font-medium text-foreground break-all sm:break-normal sm:truncate">{value}</div>
-      </div>
-      {copyable && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onCopy();
-          }}
-          aria-label={`Copy ${label}`}
-          className="text-muted-foreground hover:text-primary transition-colors shrink-0"
-        >
-          {copied ? <Check className="w-4 h-4 text-primary" /> : <Copy className="w-4 h-4" />}
-        </button>
-      )}
-    </div>
-  );
-  return href ? (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="block">
-      {content}
-    </a>
-  ) : (
-    content
-  );
-}
-
 function Contact() {
   return (
     <section id="contact" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20">
