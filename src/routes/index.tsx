@@ -32,7 +32,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Toaster } from "sonner";
 
-import portraitAsset from "@/assets/mustapha-portrait.jpg.asset.json";
+import portraitAsset from "@/assets/mustapha-main-portrait.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import velsatisImg from "@/assets/project-velsatis.jpg";
 import bougainvillaImg from "@/assets/project-bougainvilla.jpg";
