@@ -235,7 +235,7 @@ function Hero() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm text-muted-foreground">Mustapha Bourigue</div>
-                    <div className="font-display font-semibold">AI Web Developer</div>
+                    <div className="font-display font-semibold">Hotel & Riad Web Designer</div>
                   </div>
                   <span className="px-2.5 py-1 rounded-md text-[10px] font-semibold bg-primary/15 text-primary border border-primary/30">
                     MOROCCO
