@@ -773,8 +773,6 @@ function Contact() {
               </a>
               <span className="hidden sm:inline text-border">·</span>
               <span>Morocco</span>
-              <span className="hidden sm:inline text-border">·</span>
-              <span>Open to new projects</span>
             </div>
           </div>
         </Reveal>
