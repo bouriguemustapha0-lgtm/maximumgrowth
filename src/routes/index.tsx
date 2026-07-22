@@ -384,7 +384,8 @@ function About() {
 
 /* ---------- Services ---------- */
 function Services() {
-  const { t } = useT();
+  const { t, lang } = useT();
+  const details = getServiceDetails(lang);
   const services = [
     { icon: Palette, t: t("services.s1.t"), d: t("services.s1.d") },
     { icon: Calendar, t: t("services.s2.t"), d: t("services.s2.d") },
@@ -393,6 +394,9 @@ function Services() {
     { icon: MessageCircle, t: t("services.s5.t"), d: t("services.s5.d") },
     { icon: Bot, t: t("services.s6.t"), d: t("services.s6.d") },
   ];
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const active = openIdx != null ? details[openIdx] : null;
+
   return (
     <section id="services" className="relative py-32 bg-card/30">
       <div className="absolute inset-0 bg-grid opacity-20" />
@@ -412,7 +416,11 @@ function Services() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
             <Reveal key={s.t} delay={i * 100}>
-              <div className="group relative h-full rounded-2xl glass p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40">
+              <button
+                type="button"
+                onClick={() => setOpenIdx(i)}
+                className="group relative h-full w-full text-left rounded-2xl glass p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+              >
                 <div className="absolute inset-0 rounded-2xl bg-[image:var(--gradient-primary)] opacity-0 group-hover:opacity-10 transition-opacity" />
                 <div className="relative">
                   <div className="grid place-items-center w-12 h-12 rounded-xl bg-primary/15 text-primary mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
@@ -420,15 +428,98 @@ function Services() {
                   </div>
                   <h3 className="font-display font-semibold text-xl mb-2">{s.t}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
-                  <div className="mt-6 flex items-center text-sm text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                    {t("services.learnMore")} <ArrowRight className="w-4 h-4 ml-1" />
+                  <div className="mt-6 inline-flex items-center text-sm text-primary font-medium">
+                    {t("services.viewDetails")} <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
-              </div>
+              </button>
             </Reveal>
           ))}
         </div>
       </div>
+
+      <Dialog open={openIdx != null} onOpenChange={(o) => !o && setOpenIdx(null)}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-card border-border">
+          {active && (
+            <>
+              <DialogHeader className="text-left space-y-3">
+                <div className="text-4xl leading-none">{active.emoji}</div>
+                <DialogTitle className="text-2xl sm:text-3xl font-display font-bold leading-tight">
+                  {active.title}
+                </DialogTitle>
+                <DialogDescription className="text-primary font-medium text-base">
+                  {active.tagline}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="mt-4 space-y-6">
+                {active.intro.map((p, i) => (
+                  <p key={i} className="text-muted-foreground leading-relaxed">{p}</p>
+                ))}
+
+                {active.sections.map((sec, i) => {
+                  if (sec.kind === "list") {
+                    return (
+                      <div key={i}>
+                        <h4 className="font-display font-semibold text-foreground mb-3">{sec.heading}</h4>
+                        <ul className="grid sm:grid-cols-2 gap-2">
+                          {sec.items.map((it) => (
+                            <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                              <span>{it}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  }
+                  if (sec.kind === "flow") {
+                    return (
+                      <div key={i}>
+                        <h4 className="font-display font-semibold text-foreground mb-3">{sec.heading}</h4>
+                        <ol className="space-y-2">
+                          {sec.steps.map((step, k) => (
+                            <li key={k} className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/40 p-3">
+                              <span className="grid place-items-center w-7 h-7 rounded-full bg-primary/15 text-primary text-xs font-bold shrink-0">
+                                {k + 1}
+                              </span>
+                              <span className="text-sm text-foreground/90">{step}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    );
+                  }
+                  if (sec.kind === "paragraph") {
+                    return (
+                      <p key={i} className="text-muted-foreground leading-relaxed">{sec.text}</p>
+                    );
+                  }
+                  return (
+                    <div key={i} className="rounded-xl border border-primary/40 bg-primary/10 p-4 space-y-1">
+                      {sec.lines.map((line, k) => (
+                        <div key={k} className="font-display font-semibold text-foreground">{line}</div>
+                      ))}
+                    </div>
+                  );
+                })}
+
+                {active.closing && (
+                  <p className="text-foreground font-medium leading-relaxed italic">{active.closing}</p>
+                )}
+
+                <div className="pt-2">
+                  <a href="#contact" onClick={() => setOpenIdx(null)}>
+                    <Button variant="hero" size="lg" className="w-full sm:w-auto">
+                      {t("services.bookCta")} <ArrowRight />
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
