@@ -38,7 +38,7 @@ import karimAvatar from "@/assets/testimonial-karim.jpg.asset.json";
 import nadiaAvatar from "@/assets/testimonial-nadia.jpg.asset.json";
 import omarAvatar from "@/assets/testimonial-omar.jpg.asset.json";
 
-import { LanguageProvider, LangToggle, useT } from "@/lib/i18n";
+import { LanguageProvider, LangToggle, useT, getServiceDetails } from "@/lib/i18n";
 
 const portrait = portraitAsset.url;
 
