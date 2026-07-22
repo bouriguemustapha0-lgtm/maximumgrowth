@@ -167,25 +167,29 @@ function Nav() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-background/95 backdrop-blur-xl border-t border-border">
-          <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6">
-            <ul className="flex flex-col rounded-2xl bg-card border border-border p-2 text-lg font-medium shadow-lg">
-              {links.map(l => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block rounded-xl px-4 py-3.5 text-muted-foreground hover:bg-primary/10 hover:text-foreground transition-colors"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a href="#contact" onClick={() => setMobileOpen(false)}>
-              <Button variant="hero" size="lg" className="w-full">
-                Book a Free Call <ArrowRight />
-              </Button>
-            </a>
+          <div className="mx-auto max-w-7xl px-6 py-8">
+            <div className="flex flex-col rounded-2xl bg-card border border-border p-2 text-lg font-medium shadow-lg">
+              <ul className="flex flex-col">
+                {links.map(l => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-xl px-4 py-3.5 text-muted-foreground hover:bg-primary/10 hover:text-foreground transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="p-2">
+                <a href="#contact" onClick={() => setMobileOpen(false)}>
+                  <Button variant="hero" size="lg" className="w-full">
+                    Book a Free Call <ArrowRight />
+                  </Button>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}
