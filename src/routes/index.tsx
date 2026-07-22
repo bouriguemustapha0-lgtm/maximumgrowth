@@ -40,7 +40,9 @@ import darazurImg from "@/assets/project-darazur.jpg";
 import goldenImg from "@/assets/project-golden.jpg";
 import redflameImg from "@/assets/project-redflame.jpg";
 import mgLogo from "@/assets/mg-logo.png.asset.json";
-
+import karimAvatar from "@/assets/testimonial-karim.jpg.asset.json";
+import nadiaAvatar from "@/assets/testimonial-nadia.jpg.asset.json";
+import omarAvatar from "@/assets/testimonial-omar.jpg.asset.json";
 
 const portrait = portraitAsset.url;
 
