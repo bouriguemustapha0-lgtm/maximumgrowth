@@ -187,25 +187,24 @@ function Hero() {
                 <span className="absolute inset-0 rounded-full bg-primary animate-pulse-glow" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-              Available for new projects · Q2 2026
+              Available for New Hospitality Projects · Q2 2026
             </div>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
-              AI-Powered Portfolio<br />
-              Websites That Make You{" "}
-              <span className="text-gradient">Stand Out</span>
+              Websites That Bring{" "}
+              <span className="text-gradient">Hotels More Direct Bookings</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              I help students, freelancers, and creators build modern portfolio websites that attract opportunities, clients, and career growth.
+              I help guesthouses, riads, and hotels build a professional online presence that increases direct bookings and reduces reliance on booking platforms.
             </p>
           </Reveal>
           <Reveal delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact"><Button variant="hero" size="lg">Book a Free Consultation <ArrowRight /></Button></a>
-              <a href="#work"><Button variant="heroOutline" size="lg">View My Work</Button></a>
+              <a href="#work"><Button variant="heroOutline" size="lg">View Hospitality Projects</Button></a>
             </div>
           </Reveal>
           <Reveal delay={400}>
