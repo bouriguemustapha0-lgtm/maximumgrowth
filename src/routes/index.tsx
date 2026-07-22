@@ -510,9 +510,9 @@ function Stats() {
 /* ---------- Testimonials ---------- */
 function Testimonials() {
   const items = [
-    { name: "Karim Idrissi", role: "Riad Owner, Marrakech", quote: "Direct bookings from our website tripled in three months. The design finally matches the experience we offer to our guests." },
-    { name: "Nadia Benali", role: "Guesthouse Manager, Essaouira", quote: "Guests now book and pay directly, and WhatsApp integration made communication so simple. Mustapha understood our needs from day one." },
-    { name: "Omar Tazi", role: "Boutique Hotel Owner", quote: "Beautiful, fast, and built to convert. Our commission costs dropped and Google finally sends us qualified travelers." },
+    { name: "Karim Idrissi", role: "Riad Owner, Marrakech", quote: "Direct bookings from our website tripled in three months. The design finally matches the experience we offer to our guests.", img: karimAvatar.url },
+    { name: "Nadia Benali", role: "Guesthouse Manager, Essaouira", quote: "Guests now book and pay directly, and WhatsApp integration made communication so simple. Mustapha understood our needs from day one.", img: nadiaAvatar.url },
+    { name: "Omar Tazi", role: "Boutique Hotel Owner", quote: "Beautiful, fast, and built to convert. Our commission costs dropped and Google finally sends us qualified travelers.", img: omarAvatar.url },
   ];
   return (
     <section className="relative py-32">
@@ -534,9 +534,14 @@ function Testimonials() {
                 </div>
                 <blockquote className="text-foreground leading-relaxed flex-1">"{t.quote}"</blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 pt-6 border-t border-border">
-                  <div className="w-11 h-11 rounded-full bg-[image:var(--gradient-primary)] grid place-items-center font-bold text-primary-foreground">
-                    {t.name.split(" ").map(n=>n[0]).join("")}
-                  </div>
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    loading="lazy"
+                    width={44}
+                    height={44}
+                    className="w-11 h-11 rounded-full object-cover border border-border"
+                  />
                   <div>
                     <div className="font-semibold text-sm">{t.name}</div>
                     <div className="text-xs text-muted-foreground">{t.role}</div>
