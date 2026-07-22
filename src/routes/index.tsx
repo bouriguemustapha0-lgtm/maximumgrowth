@@ -342,10 +342,12 @@ function About() {
 /* ---------- Services ---------- */
 function Services() {
   const services = [
-    { icon: GraduationCap, t: "Student Portfolios", d: "Professional websites for internships and university applications." },
-    { icon: Briefcase, t: "Freelancer Websites", d: "Convert visitors into paying clients with high-converting design." },
-    { icon: Video, t: "Creator Portfolios", d: "Showcase content, videos, and personal brands beautifully." },
-    { icon: Bot, t: "AI Integration", d: "Chatbots, automation, and AI-powered experiences." },
+    { icon: Palette, t: "Hotel & Riad Websites", d: "Elegant, brand-driven websites for guesthouses, riads, and boutique hotels." },
+    { icon: Calendar, t: "Direct Booking Systems", d: "Let guests book rooms directly — no more platform commissions." },
+    { icon: Rocket, t: "Secure Online Payments", d: "Accept card payments and deposits safely on your own site." },
+    { icon: Search, t: "SEO & Google Visibility", d: "Rank on Google so travelers find you before your competitors." },
+    { icon: MessageCircle, t: "WhatsApp Booking Integration", d: "Instant chat & inquiries — the way guests prefer to book today." },
+    { icon: Bot, t: "AI Automation", d: "Automated responses, guest workflows, and smart follow-ups." },
   ];
   return (
     <section id="services" className="relative py-32 bg-card/30">
@@ -359,11 +361,11 @@ function Services() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Everything you need to <span className="text-gradient">launch</span>.
+              Everything hospitality businesses need to <span className="text-gradient">grow direct bookings</span>.
             </h2>
           </Reveal>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
             <Reveal key={s.t} delay={i * 100}>
               <div className="group relative h-full rounded-2xl glass p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40">
