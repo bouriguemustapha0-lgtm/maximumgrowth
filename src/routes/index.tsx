@@ -174,9 +174,10 @@ function Nav() {
                   <a
                     href={l.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+                    className="flex items-center justify-between rounded-xl bg-card border border-border px-5 py-4 text-foreground shadow-sm hover:bg-primary/10 hover:border-primary/30 transition-colors"
                   >
                     {l.label}
+                    <ArrowRight className="h-4 w-4 text-muted-foreground" />
                   </a>
                 </li>
               ))}
