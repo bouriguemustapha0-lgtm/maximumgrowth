@@ -4,13 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Sparkles,
-  Code2,
   Rocket,
   Bot,
-  Users,
-  Video,
-  GraduationCap,
-  Briefcase,
   Star,
   Zap,
   Smartphone,
@@ -40,6 +35,8 @@ import mgLogo from "@/assets/mg-logo.png.asset.json";
 import karimAvatar from "@/assets/testimonial-karim.jpg.asset.json";
 import nadiaAvatar from "@/assets/testimonial-nadia.jpg.asset.json";
 import omarAvatar from "@/assets/testimonial-omar.jpg.asset.json";
+
+import { LanguageProvider, LangToggle, useT } from "@/lib/i18n";
 
 const portrait = portraitAsset.url;
 
@@ -109,6 +106,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 
 /* ---------- Nav ---------- */
 function Nav() {
+  const { t } = useT();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   useEffect(() => {
@@ -123,11 +121,11 @@ function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
   const links = [
-    { href: "#about", label: "About" },
-    { href: "#services", label: "Services" },
-    { href: "#work", label: "Work" },
-    { href: "#process", label: "Process" },
-    { href: "#contact", label: "Contact" },
+    { href: "#about", label: t("nav.about") },
+    { href: "#services", label: t("nav.services") },
+    { href: "#work", label: t("nav.work") },
+    { href: "#process", label: t("nav.process") },
+    { href: "#contact", label: t("nav.contact") },
   ];
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled || mobileOpen ? "backdrop-blur-xl bg-background/80 border-b border-border" : ""}`}>
@@ -143,20 +141,24 @@ function Nav() {
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
+          <LangToggle />
           <a href="#contact">
             <Button variant="hero" size="sm">
-              Book a Call <ArrowRight />
+              {t("nav.book")} <ArrowRight />
             </Button>
           </a>
         </div>
-        <button
-          className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl glass text-foreground"
-          onClick={() => setMobileOpen(o => !o)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <LangToggle />
+          <button
+            className="inline-flex items-center justify-center w-10 h-10 rounded-xl glass text-foreground"
+            onClick={() => setMobileOpen(o => !o)}
+            aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -180,7 +182,7 @@ function Nav() {
               <div className="p-2">
                 <a href="#contact" onClick={() => setMobileOpen(false)}>
                   <Button variant="hero" size="lg" className="w-full">
-                    Book a Free Call <ArrowRight />
+                    {t("nav.bookFree")} <ArrowRight />
                   </Button>
                 </a>
               </div>
@@ -194,6 +196,7 @@ function Nav() {
 
 /* ---------- Hero ---------- */
 function Hero() {
+  const { t } = useT();
   return (
     <section id="top" className="relative min-h-screen flex items-center pt-24 overflow-hidden">
       <img
@@ -208,7 +211,6 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-radial)" }} />
 
-      {/* floating particles */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {[...Array(12)].map((_, i) => (
           <span
@@ -232,24 +234,24 @@ function Hero() {
                 <span className="absolute inset-0 rounded-full bg-primary animate-pulse-glow" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-              Available for New Hospitality Projects · Q2 2026
+              {t("hero.badge")}
             </div>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
-              Websites That Bring{" "}
-              <span className="text-gradient">Hotels More Direct Bookings</span>
+              {t("hero.title1")}{" "}
+              <span className="text-gradient">{t("hero.title2")}</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              I help guesthouses, riads, and hotels build a professional online presence that increases direct bookings and reduces reliance on booking platforms.
+              {t("hero.subtitle")}
             </p>
           </Reveal>
           <Reveal delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#contact"><Button variant="hero" size="lg">Book a Free Consultation <ArrowRight /></Button></a>
-              <a href="#work"><Button variant="heroOutline" size="lg">View Hospitality Projects</Button></a>
+              <a href="#contact"><Button variant="hero" size="lg">{t("hero.ctaPrimary")} <ArrowRight /></Button></a>
+              <a href="#work"><Button variant="heroOutline" size="lg">{t("hero.ctaSecondary")}</Button></a>
             </div>
           </Reveal>
           <Reveal delay={400}>
@@ -265,7 +267,7 @@ function Hero() {
                 <div className="flex items-center gap-0.5 text-primary">
                   {[...Array(5)].map((_,i)=><Star key={i} className="w-3.5 h-3.5 fill-current" />)}
                 </div>
-                <div className="text-xs">Trusted by hospitality clients</div>
+                <div className="text-xs">{t("hero.trusted")}</div>
               </div>
             </div>
           </Reveal>
@@ -280,22 +282,21 @@ function Hero() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm text-muted-foreground">Mustapha Bourigue</div>
-                    <div className="font-display font-semibold">Hotel & Riad Web Designer</div>
+                    <div className="font-display font-semibold">{t("hero.role")}</div>
                   </div>
                   <span className="px-2.5 py-1 rounded-md text-[10px] font-semibold bg-primary/15 text-primary border border-primary/30">
-                    MOROCCO
+                    {t("hero.country")}
                   </span>
                 </div>
               </div>
             </div>
-            {/* floating UI cards */}
             <div className="absolute -left-6 top-10 glass rounded-xl px-4 py-3 animate-float hidden sm:flex items-center gap-3">
               <Zap className="w-4 h-4 text-primary" />
-              <div className="text-xs"><div className="font-semibold">98 / 100</div><div className="text-muted-foreground">Lighthouse</div></div>
+              <div className="text-xs"><div className="font-semibold">98 / 100</div><div className="text-muted-foreground">{t("hero.lighthouse")}</div></div>
             </div>
             <div className="absolute -right-4 bottom-20 glass rounded-xl px-4 py-3 animate-float hidden sm:flex items-center gap-3" style={{ animationDelay: "1s" }}>
               <Bot className="w-4 h-4 text-primary" />
-              <div className="text-xs"><div className="font-semibold">AI Enhanced</div><div className="text-muted-foreground">Workflows</div></div>
+              <div className="text-xs"><div className="font-semibold">{t("hero.aiEnhanced")}</div><div className="text-muted-foreground">{t("hero.workflows")}</div></div>
             </div>
           </div>
         </Reveal>
@@ -322,6 +323,7 @@ function Marquee() {
 
 /* ---------- About ---------- */
 function About() {
+  const { t } = useT();
   return (
     <section id="about" className="relative py-32">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">
@@ -333,45 +335,41 @@ function About() {
             </div>
             <div className="absolute -bottom-6 -right-6 glass rounded-xl p-4 max-w-[200px]">
               <div className="text-3xl font-bold text-gradient">3+</div>
-              <div className="text-xs text-muted-foreground">Years building digital experiences</div>
+              <div className="text-xs text-muted-foreground">{t("about.years")}</div>
             </div>
           </div>
         </Reveal>
         <div className="lg:col-span-7 space-y-6">
           <Reveal>
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-              <Sparkles className="w-3.5 h-3.5" /> About Me
+              <Sparkles className="w-3.5 h-3.5" /> {t("about.eyebrow")}
             </div>
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Helping hospitality businesses <span className="text-gradient">grow online</span>.
+              {t("about.title1")} <span className="text-gradient">{t("about.title2")}</span>.
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Mustapha Bourigue, an AI Web Developer specializing in websites for guesthouses, riads, boutique hotels, and hospitality businesses.
-            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">{t("about.p1")}</p>
           </Reveal>
           <Reveal delay={250}>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I create fast, modern websites with online booking, secure payments, SEO, and WhatsApp integration so guests can book directly from your website.
-            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">{t("about.p2")}</p>
           </Reveal>
           <Reveal delay={300}>
             <ul className="grid sm:grid-cols-2 gap-4 pt-2">
               {[
-                { icon: Calendar, t: "Direct Bookings", d: "Guests reserve straight from your site." },
-                { icon: Gauge, t: "Fast & Modern", d: "Optimized for speed and mobile." },
-                { icon: Search, t: "SEO Ready", d: "Found by travelers on Google." },
-                { icon: MessageCircle, t: "WhatsApp Integrated", d: "Instant guest communication." },
-              ].map(({ icon: I, t, d }) => (
-                <li key={t} className="flex gap-3 p-4 rounded-xl glass">
+                { icon: Calendar, t: t("about.f1.t"), d: t("about.f1.d") },
+                { icon: Gauge, t: t("about.f2.t"), d: t("about.f2.d") },
+                { icon: Search, t: t("about.f3.t"), d: t("about.f3.d") },
+                { icon: MessageCircle, t: t("about.f4.t"), d: t("about.f4.d") },
+              ].map(({ icon: I, t: ft, d }) => (
+                <li key={ft} className="flex gap-3 p-4 rounded-xl glass">
                   <div className="grid place-items-center w-10 h-10 rounded-lg bg-primary/15 text-primary shrink-0">
                     <I className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="font-semibold">{t}</div>
+                    <div className="font-semibold">{ft}</div>
                     <div className="text-sm text-muted-foreground">{d}</div>
                   </div>
                 </li>
@@ -386,13 +384,14 @@ function About() {
 
 /* ---------- Services ---------- */
 function Services() {
+  const { t } = useT();
   const services = [
-    { icon: Palette, t: "Hotel & Riad Websites", d: "Elegant, brand-driven websites for guesthouses, riads, and boutique hotels." },
-    { icon: Calendar, t: "Direct Booking Systems", d: "Let guests book rooms directly — no more platform commissions." },
-    { icon: Rocket, t: "Secure Online Payments", d: "Accept card payments and deposits safely on your own site." },
-    { icon: Search, t: "SEO & Google Visibility", d: "Rank on Google so travelers find you before your competitors." },
-    { icon: MessageCircle, t: "WhatsApp Booking Integration", d: "Instant chat & inquiries — the way guests prefer to book today." },
-    { icon: Bot, t: "AI Automation", d: "Automated responses, guest workflows, and smart follow-ups." },
+    { icon: Palette, t: t("services.s1.t"), d: t("services.s1.d") },
+    { icon: Calendar, t: t("services.s2.t"), d: t("services.s2.d") },
+    { icon: Rocket, t: t("services.s3.t"), d: t("services.s3.d") },
+    { icon: Search, t: t("services.s4.t"), d: t("services.s4.d") },
+    { icon: MessageCircle, t: t("services.s5.t"), d: t("services.s5.d") },
+    { icon: Bot, t: t("services.s6.t"), d: t("services.s6.d") },
   ];
   return (
     <section id="services" className="relative py-32 bg-card/30">
@@ -401,12 +400,12 @@ function Services() {
         <div className="max-w-2xl mb-16">
           <Reveal>
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Services
+              <Sparkles className="w-3.5 h-3.5" /> {t("services.eyebrow")}
             </div>
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Everything hospitality businesses need to <span className="text-gradient">grow direct bookings</span>.
+              {t("services.title1")} <span className="text-gradient">{t("services.title2")}</span>.
             </h2>
           </Reveal>
         </div>
@@ -422,7 +421,7 @@ function Services() {
                   <h3 className="font-display font-semibold text-xl mb-2">{s.t}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
                   <div className="mt-6 flex items-center text-sm text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                    Learn more <ArrowRight className="w-4 h-4 ml-1" />
+                    {t("services.learnMore")} <ArrowRight className="w-4 h-4 ml-1" />
                   </div>
                 </div>
               </div>
@@ -436,16 +435,20 @@ function Services() {
 
 /* ---------- Portfolio ---------- */
 function Portfolio() {
+  const { t } = useT();
   const projects = [
-    { img: velsatisImg, title: "Velsatis Hotel", desc: "Boutique hotel, café & restaurant on Boulevard Mohamed V in Beni Mellal.", tags: ["Hospitality", "Hotel"], demoUrl: "https://www.velsatishotel.com/" },
-    { img: bougainvillaImg, title: "Bougainvilla Retreat", desc: "Guesthouse with pool between Casablanca and Mohammedia — booking & rooms.", tags: ["Hospitality", "Booking"], demoUrl: "https://www.bougainvillaretreat.com/" },
-    { img: darazurImg, title: "Dar Azur", desc: "Luxury 17th-century riad website with spa & suites.", tags: ["Hospitality", "Tailwind"], demoUrl: "https://darazur.lovable.app" },
-    { img: goldenImg, title: "Maison Aurelle", desc: "Five-star luxury hotel showcase with room bookings.", tags: ["Hospitality", "React"], demoUrl: "https://golden-suite-showcase.lovable.app" },
-    { img: redflameImg, title: "Red Flame", desc: "Fine dining steakhouse with menu & reservations.", tags: ["Restaurant", "AI"], demoUrl: "https://redflame.lovable.app" },
+    { img: velsatisImg, title: "Velsatis Hotel", desc: t("work.p1.d"), tags: ["Hospitality", "Hotel"], demoUrl: "https://www.velsatishotel.com/" },
+    { img: bougainvillaImg, title: "Bougainvilla Retreat", desc: t("work.p2.d"), tags: ["Hospitality", "Booking"], demoUrl: "https://www.bougainvillaretreat.com/" },
+    { img: darazurImg, title: "Dar Azur", desc: t("work.p3.d"), tags: ["Hospitality", "Tailwind"], demoUrl: "https://darazur.lovable.app" },
+    { img: goldenImg, title: "Maison Aurelle", desc: t("work.p4.d"), tags: ["Hospitality", "React"], demoUrl: "https://golden-suite-showcase.lovable.app" },
+    { img: redflameImg, title: "Red Flame", desc: t("work.p5.d"), tags: ["Restaurant", "AI"], demoUrl: "https://redflame.lovable.app" },
   ];
-  const filters = ["All", "Hospitality", "Restaurant"];
+  const filters = [
+    { key: "All", label: t("work.filter.all") },
+    { key: "Hospitality", label: t("work.filter.hospitality") },
+    { key: "Restaurant", label: t("work.filter.restaurant") },
+  ];
   const [active, setActive] = useState("All");
-
   const filtered = active === "All" ? projects : projects.filter(p => p.tags.includes(active));
 
   return (
@@ -455,12 +458,12 @@ function Portfolio() {
           <div>
             <Reveal>
               <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-4">
-                <Sparkles className="w-3.5 h-3.5" /> Selected Work
+                <Sparkles className="w-3.5 h-3.5" /> {t("work.eyebrow")}
               </div>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-                Recent <span className="text-gradient">projects</span>.
+                {t("work.title1")} <span className="text-gradient">{t("work.title2")}</span>.
               </h2>
             </Reveal>
           </div>
@@ -468,11 +471,11 @@ function Portfolio() {
             <div className="flex gap-2 flex-wrap">
               {filters.map(f => (
                 <button
-                  key={f}
-                  onClick={() => setActive(f)}
-                  className={`px-4 py-2 rounded-full text-sm border transition-all ${active === f ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:text-foreground hover:border-primary/50"}`}
+                  key={f.key}
+                  onClick={() => setActive(f.key)}
+                  className={`px-4 py-2 rounded-full text-sm border transition-all ${active === f.key ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:text-foreground hover:border-primary/50"}`}
                 >
-                  {f}
+                  {f.label}
                 </button>
               ))}
             </div>
@@ -490,13 +493,13 @@ function Portfolio() {
                 </div>
                 <div className="p-6 -mt-16 relative">
                   <div className="flex flex-wrap gap-1.5 mb-3">
-                    {p.tags.map(t => <span key={t} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-md bg-primary/15 text-primary border border-primary/30 font-semibold">{t}</span>)}
+                    {p.tags.map(tag => <span key={tag} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-md bg-primary/15 text-primary border border-primary/30 font-semibold">{tag}</span>)}
                   </div>
                   <h3 className="font-display font-semibold text-xl">{p.title}</h3>
                   <p className="text-sm text-muted-foreground mt-1">{p.desc}</p>
                   <div className="mt-5 flex gap-2">
                     <a href={p.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex">
-                      <Button variant="hero" size="sm">Live Demo <ExternalLink /></Button>
+                      <Button variant="hero" size="sm">{t("work.demo")} <ExternalLink /></Button>
                     </a>
                   </div>
                 </div>
@@ -511,13 +514,14 @@ function Portfolio() {
 
 /* ---------- Why Choose Me ---------- */
 function Stats() {
+  const { t } = useT();
   const reasons = [
-    { icon: Calendar, t: "More Direct Bookings", d: "Convert visitors into guests booking straight from your website." },
-    { icon: Rocket, t: "Lower Commission Costs", d: "Reduce dependence on Booking.com and Airbnb fees." },
-    { icon: Smartphone, t: "Mobile-First Design", d: "Optimized for travelers browsing on their phones." },
-    { icon: Search, t: "SEO Optimized", d: "Rank higher on Google for your city, riad, or hotel niche." },
-    { icon: MessageCircle, t: "WhatsApp Integrated", d: "Guests reach you instantly — the way they prefer." },
-    { icon: Bot, t: "Built with AI", d: "Faster delivery, smarter workflows, better performance." },
+    { icon: Calendar, t: t("why.r1.t"), d: t("why.r1.d") },
+    { icon: Rocket, t: t("why.r2.t"), d: t("why.r2.d") },
+    { icon: Smartphone, t: t("why.r3.t"), d: t("why.r3.d") },
+    { icon: Search, t: t("why.r4.t"), d: t("why.r4.d") },
+    { icon: MessageCircle, t: t("why.r5.t"), d: t("why.r5.d") },
+    { icon: Bot, t: t("why.r6.t"), d: t("why.r6.d") },
   ];
   return (
     <section className="relative py-32 bg-card/30 overflow-hidden">
@@ -526,9 +530,9 @@ function Stats() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Why Hospitality Businesses Choose Me
+              <Sparkles className="w-3.5 h-3.5" /> {t("why.eyebrow")}
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold">Built for <span className="text-gradient">direct bookings</span>.</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">{t("why.title1")} <span className="text-gradient">{t("why.title2")}</span>.</h2>
           </div>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -551,10 +555,11 @@ function Stats() {
 
 /* ---------- Testimonials ---------- */
 function Testimonials() {
+  const { t } = useT();
   const items = [
-    { name: "Karim Idrissi", role: "Riad Owner, Marrakech", quote: "Direct bookings from our website tripled in three months. The design finally matches the experience we offer to our guests.", img: karimAvatar.url },
-    { name: "Nadia Benali", role: "Guesthouse Manager, Essaouira", quote: "Guests now book and pay directly, and WhatsApp integration made communication so simple. Mustapha understood our needs from day one.", img: nadiaAvatar.url },
-    { name: "Omar Tazi", role: "Boutique Hotel Owner", quote: "Beautiful, fast, and built to convert. Our commission costs dropped and Google finally sends us qualified travelers.", img: omarAvatar.url },
+    { name: "Karim Idrissi", role: t("test.t1.role"), quote: t("test.t1.q"), img: karimAvatar.url },
+    { name: "Nadia Benali", role: t("test.t2.role"), quote: t("test.t2.q"), img: nadiaAvatar.url },
+    { name: "Omar Tazi", role: t("test.t3.role"), quote: t("test.t3.q"), img: omarAvatar.url },
   ];
   return (
     <section className="relative py-32">
@@ -562,31 +567,31 @@ function Testimonials() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Testimonials
+              <Sparkles className="w-3.5 h-3.5" /> {t("test.eyebrow")}
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold">Loved by <span className="text-gradient">clients</span>.</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">{t("test.title1")} <span className="text-gradient">{t("test.title2")}</span>.</h2>
           </div>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6">
-          {items.map((t, i) => (
-            <Reveal key={t.name} delay={i * 120}>
+          {items.map((it, i) => (
+            <Reveal key={it.name} delay={i * 120}>
               <figure className="glass rounded-2xl p-7 h-full flex flex-col">
                 <div className="flex gap-0.5 text-primary mb-4">
                   {[...Array(5)].map((_,k)=><Star key={k} className="w-4 h-4 fill-current" />)}
                 </div>
-                <blockquote className="text-foreground leading-relaxed flex-1">"{t.quote}"</blockquote>
+                <blockquote className="text-foreground leading-relaxed flex-1">"{it.quote}"</blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 pt-6 border-t border-border">
                   <img
-                    src={t.img}
-                    alt={t.name}
+                    src={it.img}
+                    alt={it.name}
                     loading="lazy"
                     width={44}
                     height={44}
                     className="w-11 h-11 rounded-full object-cover border border-border"
                   />
                   <div>
-                    <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-xs text-muted-foreground">{t.role}</div>
+                    <div className="font-semibold text-sm">{it.name}</div>
+                    <div className="text-xs text-muted-foreground">{it.role}</div>
                   </div>
                 </figcaption>
               </figure>
@@ -600,11 +605,12 @@ function Testimonials() {
 
 /* ---------- Process ---------- */
 function Process() {
+  const { t } = useT();
   const steps = [
-    { n: "01", t: "Discovery Call", d: "We talk goals, audience, and what success looks like." },
-    { n: "02", t: "Planning & Design", d: "Wireframes, design system, brand-aligned visuals." },
-    { n: "03", t: "Development", d: "Built with modern tools, AI-assisted, fully responsive." },
-    { n: "04", t: "Launch & Support", d: "Deploy, optimize, and grow with continuous improvements." },
+    { n: "01", t: t("process.s1.t"), d: t("process.s1.d") },
+    { n: "02", t: t("process.s2.t"), d: t("process.s2.d") },
+    { n: "03", t: t("process.s3.t"), d: t("process.s3.d") },
+    { n: "04", t: t("process.s4.t"), d: t("process.s4.d") },
   ];
   return (
     <section id="process" className="relative py-32 bg-card/30">
@@ -612,9 +618,9 @@ function Process() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-20">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Process
+              <Sparkles className="w-3.5 h-3.5" /> {t("process.eyebrow")}
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold">A clear path to <span className="text-gradient">launch</span>.</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">{t("process.title1")} <span className="text-gradient">{t("process.title2")}</span>.</h2>
           </div>
         </Reveal>
         <div className="relative grid md:grid-cols-4 gap-6">
@@ -639,6 +645,7 @@ function Process() {
 
 /* ---------- Contact ---------- */
 function Contact() {
+  const { t } = useT();
   return (
     <section id="contact" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20">
       <div className="absolute inset-0" style={{ background: "var(--gradient-radial)" }} />
@@ -647,22 +654,21 @@ function Contact() {
         <div className="text-center space-y-5 mb-12">
           <Reveal>
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-              <Sparkles className="w-3.5 h-3.5" /> Let's connect
+              <Sparkles className="w-3.5 h-3.5" /> {t("contact.eyebrow")}
             </div>
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Get more <span className="text-gradient">direct bookings</span>.
+              {t("contact.title1")} <span className="text-gradient">{t("contact.title2")}</span>.
             </h2>
           </Reveal>
           <Reveal delay={150}>
             <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
-              The fastest way to reach me is WhatsApp — I usually reply within a few hours.
+              {t("contact.subtitle")}
             </p>
           </Reveal>
         </div>
 
-        {/* Primary CTA — Book a call */}
         <Reveal delay={200}>
           <div className="group relative block overflow-hidden rounded-3xl border border-primary/50 bg-gradient-to-br from-primary/25 via-primary/10 to-transparent backdrop-blur-xl p-6 sm:p-8 hover:border-primary transition-all shadow-xl shadow-primary/10 hover:shadow-primary/30">
             <div className="absolute -right-10 -top-10 w-56 h-56 rounded-full bg-primary/20 blur-3xl group-hover:bg-primary/30 transition-colors" />
@@ -676,13 +682,13 @@ function Contact() {
                     <span className="absolute inset-0 rounded-full bg-primary animate-pulse-glow" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
                   </span>
-                  Fastest reply
+                  {t("contact.fastest")}
                 </div>
                 <div className="text-2xl sm:text-3xl font-bold text-foreground leading-tight">
-                  Book a Free Call
+                  {t("contact.bookFree")}
                 </div>
                 <div className="text-sm sm:text-base text-muted-foreground mt-1">
-                  +212 699 309 986 · Free 15-min consultation, no commitment.
+                  {t("contact.bookDesc")}
                 </div>
                 <div className="mt-3 flex flex-wrap items-center gap-3">
                   <a
@@ -692,14 +698,14 @@ function Contact() {
                     className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    WhatsApp
+                    {t("contact.whatsapp")}
                   </a>
                   <a
                     href="tel:+212699309986"
                     className="inline-flex items-center gap-2 rounded-full border border-primary/50 text-primary px-4 py-2 text-sm font-semibold hover:bg-primary/10 transition-colors"
                   >
                     <Phone className="w-4 h-4" />
-                    Call directly
+                    {t("contact.call")}
                   </a>
                 </div>
               </div>
@@ -710,7 +716,6 @@ function Contact() {
           </div>
         </Reveal>
 
-        {/* Secondary channels */}
         <div className="mt-4 grid sm:grid-cols-2 gap-4">
           <Reveal delay={250}>
             <a
@@ -723,8 +728,8 @@ function Contact() {
                 <Instagram className="w-5 h-5" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-semibold text-foreground">Instagram</div>
-                <div className="text-sm text-muted-foreground">Follow my latest work</div>
+                <div className="font-semibold text-foreground">{t("contact.ig.t")}</div>
+                <div className="text-sm text-muted-foreground">{t("contact.ig.d")}</div>
               </div>
               <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
             </a>
@@ -738,19 +743,18 @@ function Contact() {
                 <Mail className="w-5 h-5" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-semibold text-foreground">Send an email</div>
-                <div className="text-sm text-muted-foreground truncate">Best for project briefs</div>
+                <div className="font-semibold text-foreground">{t("contact.email.t")}</div>
+                <div className="text-sm text-muted-foreground truncate">{t("contact.email.d")}</div>
               </div>
               <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
             </a>
           </Reveal>
         </div>
 
-        {/* Extra info — not essential */}
         <Reveal delay={350}>
           <div className="mt-8">
             <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground/70 mb-4 text-center">
-              Additional info
+              {t("contact.additional")}
             </h3>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
               <a
@@ -781,9 +785,9 @@ function Contact() {
   );
 }
 
-
 /* ---------- Footer ---------- */
 function Footer() {
+  const { t } = useT();
   return (
     <footer className="border-t border-border py-10">
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-sm text-muted-foreground">
@@ -791,11 +795,11 @@ function Footer() {
           <img src={mgLogo.url} alt="MG logo" width={36} height={26} className="h-6 w-auto" />
           MAXIMUM <span className="text-primary">GROWTH</span>
         </div>
-        <div>© {new Date().getFullYear()} Mustapha Bourigue. All rights reserved.</div>
+        <div>© {new Date().getFullYear()} Mustapha Bourigue. {t("footer.rights")}</div>
         <div className="flex gap-4">
-          <a href="#about" className="hover:text-foreground transition-colors">About</a>
-          <a href="#work" className="hover:text-foreground transition-colors">Work</a>
-          <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+          <a href="#about" className="hover:text-foreground transition-colors">{t("nav.about")}</a>
+          <a href="#work" className="hover:text-foreground transition-colors">{t("nav.work")}</a>
+          <a href="#contact" className="hover:text-foreground transition-colors">{t("nav.contact")}</a>
         </div>
       </div>
     </footer>
@@ -804,19 +808,21 @@ function Footer() {
 
 function Index() {
   return (
-    <main className="dark relative min-h-screen bg-background text-foreground">
-      <Toaster theme="dark" position="top-right" richColors />
-      <Nav />
-      <Hero />
-      <Marquee />
-      <About />
-      <Services />
-      <Portfolio />
-      <Stats />
-      <Testimonials />
-      <Process />
-      <Contact />
-      <Footer />
-    </main>
+    <LanguageProvider>
+      <main className="dark relative min-h-screen bg-background text-foreground">
+        <Toaster theme="dark" position="top-right" richColors />
+        <Nav />
+        <Hero />
+        <Marquee />
+        <About />
+        <Services />
+        <Portfolio />
+        <Stats />
+        <Testimonials />
+        <Process />
+        <Contact />
+        <Footer />
+      </main>
+    </LanguageProvider>
   );
 }
