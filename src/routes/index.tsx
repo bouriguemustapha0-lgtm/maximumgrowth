@@ -805,20 +805,35 @@ function Contact() {
           </Reveal>
         </div>
 
-        {/* Contact details */}
+        {/* Extra info — not essential */}
         <Reveal delay={350}>
-          <div className="mt-6 relative rounded-2xl sm:border sm:border-border sm:bg-card/30 sm:backdrop-blur-xl sm:p-8 p-0">
-            <div className="hidden sm:block absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-            <h3 className="hidden sm:block text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
-              Contact details
+          <div className="mt-8">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground/70 mb-4 text-center">
+              Additional info
             </h3>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <ContactRow icon={Phone} label="Phone" value="+212 699 309 986" href="tel:+212699309986" copyable />
-              <ContactRow icon={Mail} label="Email" value="bouriguemustapha0@gmail.com" href="mailto:bouriguemustapha0@gmail.com" copyable />
-              <ContactRow icon={Globe} label="Website" value="maximumgrowth.AI" />
-              <ContactRow icon={Linkedin} label="LinkedIn" value="Mustapha Bourigue" href="https://www.linkedin.com/in/mustapha-bourigue" />
-              <ContactRow icon={MapPin} label="Based in" value="Morocco" />
-              <ContactRow icon={Calendar} label="Availability" value="Open to new projects" />
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              <a
+                href="mailto:bouriguemustapha0@gmail.com"
+                className="hover:text-primary transition-colors"
+                aria-label="Email"
+              >
+                bouriguemustapha0@gmail.com
+              </a>
+              <span className="hidden sm:inline text-border">·</span>
+              <span>maximumgrowth.AI</span>
+              <span className="hidden sm:inline text-border">·</span>
+              <a
+                href="https://www.linkedin.com/in/mustapha-bourigue"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                LinkedIn
+              </a>
+              <span className="hidden sm:inline text-border">·</span>
+              <span>Morocco</span>
+              <span className="hidden sm:inline text-border">·</span>
+              <span>Open to new projects</span>
             </div>
           </div>
         </Reveal>
