@@ -20,8 +20,10 @@ import {
   Calendar,
   Menu,
   X,
+  Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Toaster } from "sonner";
 
 import portraitAsset from "@/assets/mustapha-main-portrait.png.asset.json";
