@@ -463,15 +463,15 @@ function Portfolio() {
   );
 }
 
-/* ---------- Stats ---------- */
+/* ---------- Why Choose Me ---------- */
 function Stats() {
-  const stats = [
-    { icon: Smartphone, n: 100, s: "%", l: "Responsive" },
-    { icon: Search, n: 95, s: "+", l: "SEO Score" },
-    { icon: Gauge, n: 98, s: "/100", l: "Performance" },
-    { icon: Bot, n: 50, s: "+", l: "AI Workflows" },
-    { icon: Palette, n: 25, s: "+", l: "Designs Shipped" },
-    { icon: Rocket, n: 3, s: "x", l: "Faster Launch" },
+  const reasons = [
+    { icon: Calendar, t: "More Direct Bookings", d: "Convert visitors into guests booking straight from your website." },
+    { icon: Rocket, t: "Lower Commission Costs", d: "Reduce dependence on Booking.com and Airbnb fees." },
+    { icon: Smartphone, t: "Mobile-First Design", d: "Optimized for travelers browsing on their phones." },
+    { icon: Search, t: "SEO Optimized", d: "Rank higher on Google for your city, riad, or hotel niche." },
+    { icon: MessageCircle, t: "WhatsApp Integrated", d: "Guests reach you instantly — the way they prefer." },
+    { icon: Bot, t: "Built with AI", d: "Faster delivery, smarter workflows, better performance." },
   ];
   return (
     <section className="relative py-32 bg-card/30 overflow-hidden">
@@ -480,20 +480,20 @@ function Stats() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Why Work With Me
+              <Sparkles className="w-3.5 h-3.5" /> Why Hospitality Businesses Choose Me
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold">Built for <span className="text-gradient">results</span>.</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">Built for <span className="text-gradient">direct bookings</span>.</h2>
           </div>
         </Reveal>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {stats.map((st, i) => (
-            <Reveal key={st.l} delay={i * 60}>
-              <div className="glass rounded-2xl p-6 text-center hover:border-primary/40 transition-all hover:-translate-y-1">
-                <st.icon className="w-5 h-5 text-primary mx-auto mb-3" />
-                <div className="text-3xl font-display font-bold text-gradient">
-                  <Counter to={st.n} suffix={st.s} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {reasons.map((r, i) => (
+            <Reveal key={r.t} delay={i * 80}>
+              <div className="glass rounded-2xl p-6 hover:border-primary/40 transition-all hover:-translate-y-1 h-full">
+                <div className="grid place-items-center w-11 h-11 rounded-xl bg-primary/15 text-primary mb-4">
+                  <r.icon className="w-5 h-5" />
                 </div>
-                <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">{st.l}</div>
+                <h3 className="font-display font-semibold text-lg mb-1.5">{r.t}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{r.d}</p>
               </div>
             </Reveal>
           ))}
