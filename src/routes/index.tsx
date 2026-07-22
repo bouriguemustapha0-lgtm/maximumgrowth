@@ -220,7 +220,7 @@ function Hero() {
                 <div className="flex items-center gap-0.5 text-primary">
                   {[...Array(5)].map((_,i)=><Star key={i} className="w-3.5 h-3.5 fill-current" />)}
                 </div>
-                <div className="text-xs">Trusted by creators worldwide</div>
+                <div className="text-xs">Trusted by hospitality clients</div>
               </div>
             </div>
           </Reveal>
