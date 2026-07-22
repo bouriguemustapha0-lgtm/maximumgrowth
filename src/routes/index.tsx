@@ -724,8 +724,8 @@ function Contact() {
         <div className="grid lg:grid-cols-5 gap-6 lg:gap-8">
           {/* Left: contact details */}
           <Reveal delay={200} className="lg:col-span-3">
-            <div className="relative rounded-2xl border border-border bg-card/30 backdrop-blur-xl p-6 sm:p-8 h-full">
-              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+            <div className="relative rounded-2xl sm:border sm:border-border sm:bg-card/30 sm:backdrop-blur-xl sm:p-8 p-0 h-full">
+              <div className="hidden sm:block absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
               <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
                 Contact details
               </h3>
