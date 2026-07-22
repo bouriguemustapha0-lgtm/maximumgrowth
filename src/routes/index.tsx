@@ -132,7 +132,7 @@ function Nav() {
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled || mobileOpen ? "backdrop-blur-xl bg-background/80 border-b border-border" : ""}`}>
       <nav className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <img src={mgLogo.url} alt="MG — Mustapha Bourigue" width={40} height={28} className="h-7 w-auto" />
+          <img src={mgLogo} alt="MG — Mustapha Bourigue" width={40} height={28} className="h-7 w-auto" />
           <span className="font-display font-bold text-base sm:text-lg hidden sm:inline tracking-tight">MAXIMUM <span className="text-primary">GROWTH</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -649,9 +649,9 @@ function Stats() {
 function Testimonials() {
   const { t } = useT();
   const items = [
-    { name: "Karim Idrissi", role: t("test.t1.role"), quote: t("test.t1.q"), img: karimAvatar.url },
-    { name: "Nadia Benali", role: t("test.t2.role"), quote: t("test.t2.q"), img: nadiaAvatar.url },
-    { name: "Omar Tazi", role: t("test.t3.role"), quote: t("test.t3.q"), img: omarAvatar.url },
+    { name: "Karim Idrissi", role: t("test.t1.role"), quote: t("test.t1.q"), img: karimAvatar },
+    { name: "Nadia Benali", role: t("test.t2.role"), quote: t("test.t2.q"), img: nadiaAvatar },
+    { name: "Omar Tazi", role: t("test.t3.role"), quote: t("test.t3.q"), img: omarAvatar },
   ];
   return (
     <section className="relative py-32">
@@ -884,7 +884,7 @@ function Footer() {
     <footer className="border-t border-border py-10">
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center gap-2.5 font-display font-semibold text-foreground">
-          <img src={mgLogo.url} alt="MG logo" width={36} height={26} className="h-6 w-auto" />
+          <img src={mgLogo} alt="MG logo" width={36} height={26} className="h-6 w-auto" />
           MAXIMUM <span className="text-primary">GROWTH</span>
         </div>
         <div>© {new Date().getFullYear()} Mustapha Bourigue. {t("footer.rights")}</div>
