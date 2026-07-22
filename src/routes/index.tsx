@@ -506,9 +506,9 @@ function Stats() {
 /* ---------- Testimonials ---------- */
 function Testimonials() {
   const items = [
-    { name: "Sara El Amrani", role: "Engineering Student", quote: "My portfolio landed me three internship interviews in the first month. Mustapha completely understood what I needed." },
-    { name: "Yassine Karim", role: "Content Creator", quote: "Premium quality, fast delivery, and a polished look. My audience and brand deals doubled after launch." },
-    { name: "Lina Bouazza", role: "Freelance Designer", quote: "The website pays for itself every month. Clean, modern, and built to convert. Highly recommended." },
+    { name: "Karim Idrissi", role: "Riad Owner, Marrakech", quote: "Direct bookings from our website tripled in three months. The design finally matches the experience we offer to our guests." },
+    { name: "Nadia Benali", role: "Guesthouse Manager, Essaouira", quote: "Guests now book and pay directly, and WhatsApp integration made communication so simple. Mustapha understood our needs from day one." },
+    { name: "Omar Tazi", role: "Boutique Hotel Owner", quote: "Beautiful, fast, and built to convert. Our commission costs dropped and Google finally sends us qualified travelers." },
   ];
   return (
     <section className="relative py-32">
