@@ -26,21 +26,20 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Toaster } from "sonner";
 
-import portraitAsset from "@/assets/mustapha-main-portrait.png.asset.json";
+import portrait from "@/assets/mustapha-main-portrait.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import velsatisImg from "@/assets/project-velsatis.jpg";
 import bougainvillaImg from "@/assets/project-bougainvilla.jpg";
 import darazurImg from "@/assets/project-darazur.jpg";
 import goldenImg from "@/assets/project-golden.jpg";
 import redflameImg from "@/assets/project-redflame.jpg";
-import mgLogo from "@/assets/mg-logo.png.asset.json";
-import karimAvatar from "@/assets/testimonial-karim.jpg.asset.json";
-import nadiaAvatar from "@/assets/testimonial-nadia.jpg.asset.json";
-import omarAvatar from "@/assets/testimonial-omar.jpg.asset.json";
+import mgLogo from "@/assets/mg-logo.png";
+import karimAvatar from "@/assets/testimonial-karim.jpg";
+import nadiaAvatar from "@/assets/testimonial-nadia.jpg";
+import omarAvatar from "@/assets/testimonial-omar.jpg";
 
 import { LanguageProvider, LangToggle, useT, getServiceDetails } from "@/lib/i18n";
 
-const portrait = portraitAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
