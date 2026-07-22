@@ -300,21 +300,26 @@ function About() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
-              Crafting portfolios that <span className="text-gradient">open doors</span>.
+              Helping hospitality businesses <span className="text-gradient">grow online</span>.
             </h2>
           </Reveal>
           <Reveal delay={200}>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Mustapha Bourigue, an AI Web Developer passionate about helping people build a strong online presence through beautiful and high-performing portfolio websites.
+              I'm Mustapha Bourigue, an AI Web Developer specializing in websites for guesthouses, riads, boutique hotels, and hospitality businesses.
+            </p>
+          </Reveal>
+          <Reveal delay={250}>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I create fast, modern websites with online booking, secure payments, SEO, and WhatsApp integration so guests can book directly from your website.
             </p>
           </Reveal>
           <Reveal delay={300}>
             <ul className="grid sm:grid-cols-2 gap-4 pt-2">
               {[
-                { icon: Rocket, t: "Fast Delivery", d: "Launch in days, not months." },
-                { icon: Code2, t: "Modern Stack", d: "React, Next.js, Tailwind CSS." },
-                { icon: Bot, t: "AI-Powered", d: "Smarter workflows, better results." },
-                { icon: Users, t: "User-Focused", d: "Designed to convert visitors." },
+                { icon: Calendar, t: "Direct Bookings", d: "Guests reserve straight from your site." },
+                { icon: Gauge, t: "Fast & Modern", d: "Optimized for speed and mobile." },
+                { icon: Search, t: "SEO Ready", d: "Found by travelers on Google." },
+                { icon: MessageCircle, t: "WhatsApp Integrated", d: "Instant guest communication." },
               ].map(({ icon: I, t, d }) => (
                 <li key={t} className="flex gap-3 p-4 rounded-xl glass">
                   <div className="grid place-items-center w-10 h-10 rounded-lg bg-primary/15 text-primary shrink-0">
