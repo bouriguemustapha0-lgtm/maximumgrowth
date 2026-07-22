@@ -665,13 +665,13 @@ function ContactRow({
     } catch {}
   };
   const content = (
-    <div className="flex items-center gap-4 rounded-xl border border-border/60 bg-card/40 backdrop-blur px-4 py-3 hover:border-primary/50 hover:bg-card/70 transition-all">
+    <div className="flex items-center gap-3 sm:gap-4 rounded-xl border border-border/60 bg-card/40 backdrop-blur px-3 sm:px-4 py-3 hover:border-primary/50 hover:bg-card/70 transition-all">
       <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
         <Icon className="w-4 h-4" />
       </div>
       <div className="flex-1 min-w-0 text-left">
         <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/80 font-semibold">{label}</div>
-        <div className="text-sm font-medium text-foreground truncate">{value}</div>
+        <div className="text-sm font-medium text-foreground break-all sm:break-normal sm:truncate">{value}</div>
       </div>
       {copyable && (
         <button
