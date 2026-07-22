@@ -655,12 +655,12 @@ function Contact() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Let's build something <span className="text-gradient">amazing</span> together.
+              Get more <span className="text-gradient">direct bookings</span>.
             </h2>
           </Reveal>
           <Reveal delay={150}>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Have a project in mind or want to discuss how AI can accelerate your growth? Reach out — I usually reply within 24 hours.
+              Let's talk about your riad, guesthouse, or hotel and how a modern website can grow your direct bookings. I usually reply within 24 hours.
             </p>
           </Reveal>
         </div>
