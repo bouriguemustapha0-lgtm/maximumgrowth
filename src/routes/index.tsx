@@ -34,7 +34,7 @@ import { Toaster } from "sonner";
 
 import portraitAsset from "@/assets/mustapha-portrait.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
-import hotelImg from "@/assets/project-hotel.jpg";
+import bougainvillaImg from "@/assets/project-bougainvilla.jpg";
 import darazurImg from "@/assets/project-darazur.jpg";
 import goldenImg from "@/assets/project-golden.jpg";
 import redflameImg from "@/assets/project-redflame.jpg";
