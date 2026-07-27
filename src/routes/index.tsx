@@ -144,6 +144,9 @@ function Nav() {
         </ul>
         <div className="hidden md:flex items-center gap-3">
           <LangToggle />
+          <Link to="/funnel" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-glow" /> DEMO
+          </Link>
           <a href="#contact">
             <Button variant="hero" size="sm">
               {t("nav.book")} <ArrowRight />
@@ -180,7 +183,10 @@ function Nav() {
                   </li>
                 ))}
               </ul>
-              <div className="p-2">
+              <div className="p-2 space-y-2">
+                <Link to="/funnel" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold tracking-wider border border-primary/40 text-primary">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-glow" /> DEMO — DEVIS SITE WEB
+                </Link>
                 <a href="#contact" onClick={() => setMobileOpen(false)}>
                   <Button variant="hero" size="lg" className="w-full">
                     {t("nav.bookFree")} <ArrowRight />
