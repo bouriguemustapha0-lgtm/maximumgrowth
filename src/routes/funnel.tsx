@@ -245,7 +245,12 @@ function FunnelPage() {
               data={data}
               update={update}
               onBack={() => setStep(5)}
-              onSubmit={() => setStep(7)}
+              onSubmit={() => {
+                const msg = buildWhatsAppMessage(data);
+                const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+                window.open(url, "_blank", "noopener,noreferrer");
+                setStep(7);
+              }}
             />
           )}
 
@@ -636,8 +641,8 @@ const LABELS: Record<string, Record<string, string>> = {
   },
 };
 
-function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
-  const message = [
+function buildWhatsAppMessage(data: FormState): string {
+  return [
     "Bonjour ! Je viens de remplir le formulaire Maximum Growth.",
     "Voici mes informations :",
     "───────────────",
@@ -654,7 +659,10 @@ function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
     "",
     "Merci de m'envoyer mon plan de croissance gratuit !",
   ].join("\n");
+}
 
+function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
+  const message = buildWhatsAppMessage(data);
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
   const Row = ({ label, value }: { label: string; value: string }) => (
