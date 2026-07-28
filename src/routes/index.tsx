@@ -187,11 +187,11 @@ function Nav() {
                 <Link to="/funnel" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold tracking-wider border border-primary/40 text-primary">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-glow" /> DEMO — DEVIS SITE WEB
                 </Link>
-                <a href="#contact" onClick={() => setMobileOpen(false)}>
+                <Link to="/funnel" onClick={() => setMobileOpen(false)}>
                   <Button variant="hero" size="lg" className="w-full">
                     {t("nav.bookFree")} <ArrowRight />
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
