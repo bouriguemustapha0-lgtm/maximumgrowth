@@ -9,10 +9,10 @@ const WHATSAPP_NUMBER = "212699309986";
 export const Route = createFileRoute("/funnel")({
   head: () => ({
     meta: [
-      { title: "Free Growth Plan — Hotels, Riads & Guest Houses" },
-      { name: "description", content: "Get more direct bookings, be found on Google & AI search, and reduce your dependence on OTAs. Free personalized growth plan in 60 seconds." },
-      { property: "og:title", content: "Maximum Growth — Free Hospitality Growth Plan" },
-      { property: "og:description", content: "We help hotels, riads & guest houses win direct bookings and cut OTA fees." },
+      { title: "Plan de Croissance Gratuit — Hôtels, Riads & Maisons d'Hôtes" },
+      { name: "description", content: "Obtenez plus de réservations directes, soyez visible sur Google & la recherche IA, et réduisez votre dépendance aux OTA. Plan de croissance personnalisé gratuit en 60 secondes." },
+      { property: "og:title", content: "Maximum Growth — Plan de Croissance Hôtelier Gratuit" },
+      { property: "og:description", content: "Nous aidons hôtels, riads et maisons d'hôtes à gagner des réservations directes et réduire les commissions OTA." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },
     ],
