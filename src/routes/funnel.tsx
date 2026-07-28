@@ -46,16 +46,17 @@ const initialState: FormState = {
 
 /* ============ Palette (Moroccan luxury) ============ */
 // terracotta #C1502E, cream #FBF6EE, emerald #0F5F4E, gold #C9A227
+// Aligned with main site: deep red primary on dark background
 const palette = {
-  cream: "#FBF6EE",
-  creamDeep: "#F3E9D7",
-  terracotta: "#C1502E",
-  terracottaDark: "#9E3E22",
-  emerald: "#0F5F4E",
-  emeraldDark: "#0A4638",
-  gold: "#C9A227",
-  ink: "#2A1E15",
-  inkSoft: "#6B584A",
+  cream: "#0A0A0B",        // page background (dark)
+  creamDeep: "#141416",    // subtle surface
+  terracotta: "#DC2626",   // primary red (CTA / accents)
+  terracottaDark: "#991B1B", // deep red (gradient end)
+  emerald: "#1A1A1D",      // card / secondary surface
+  emeraldDark: "#0F0F11",  // deeper surface
+  gold: "#F87171",         // soft red highlight
+  ink: "#F5F5F5",          // primary text on dark
+  inkSoft: "#A1A1AA",      // muted text
 };
 
 /* ============ Page ============ */
