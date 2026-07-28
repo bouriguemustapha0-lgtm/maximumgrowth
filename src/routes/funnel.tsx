@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, ExternalLink, Play, MessageCircle, Sparkles } from "lucide-react";
-import demoVideo from "@/assets/demo-funnel.mp4.asset.json";
+import demoVideo from "@/assets/demo-funnel.mp4";
 import logo from "@/assets/mg-logo.png";
 
 const WHATSAPP_NUMBER = "212699309986";
@@ -345,7 +345,7 @@ function DemoVideoPlayer() {
     >
       <video
         ref={videoRef}
-        src={demoVideo.url}
+        src={demoVideo}
         className="absolute inset-0 w-full h-full object-cover"
         playsInline
         preload="metadata"
