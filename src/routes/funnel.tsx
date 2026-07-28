@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Play, MessageCircle } from "lucide-react";
+import demoVideo from "@/assets/demo-funnel.mp4.asset.json";
 
 const WHATSAPP_NUMBER = "212600000000";
 
@@ -215,6 +216,56 @@ function NavButtons({
   );
 }
 
+/* ============ Demo Video Player ============ */
+function DemoVideoPlayer() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const handlePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.play().then(() => setPlaying(true)).catch(() => {});
+  };
+
+  return (
+    <div
+      className="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl bg-black"
+      style={{ boxShadow: `0 30px 80px -30px ${palette.emerald}80` }}
+    >
+      <video
+        ref={videoRef}
+        src={demoVideo.url}
+        className="absolute inset-0 w-full h-full object-cover"
+        playsInline
+        preload="metadata"
+        controls={playing}
+        onEnded={() => setPlaying(false)}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+      />
+      {!playing && (
+        <button
+          type="button"
+          onClick={handlePlay}
+          aria-label="Lire la vidéo de démonstration"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-3 group cursor-pointer"
+          style={{
+            background: `linear-gradient(135deg, ${palette.emerald}CC, ${palette.emeraldDark}CC)`,
+          }}
+        >
+          <div
+            className="w-20 h-20 rounded-full grid place-items-center transition-transform group-hover:scale-110"
+            style={{ background: palette.cream, boxShadow: `0 20px 40px -10px ${palette.ink}80` }}
+          >
+            <Play className="w-8 h-8 ml-1" style={{ color: palette.terracotta, fill: palette.terracotta }} />
+          </div>
+          <span className="text-sm font-medium text-white/90">Découvrez la solution en 60 secondes</span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 /* ============ Step 1: Hero ============ */
 function StepHero({ onStart }: { onStart: () => void }) {
   return (
@@ -236,25 +287,9 @@ function StepHero({ onStart }: { onStart: () => void }) {
         de vos calendriers et encaissez vos paiements sur votre compte bancaire marocain.
       </p>
 
-      {/* Video placeholder */}
-      <div className="mt-10 max-w-3xl mx-auto">
-        <div
-          className="relative aspect-video rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
-          style={{
-            background: `linear-gradient(135deg, ${palette.emerald}, ${palette.emeraldDark})`,
-            boxShadow: `0 30px 80px -30px ${palette.emerald}80`,
-          }}
-        >
-          <div className="absolute inset-0 opacity-20"
-            style={{ backgroundImage: `radial-gradient(circle at 30% 30%, ${palette.gold}, transparent 60%)` }} />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <div className="w-20 h-20 rounded-full grid place-items-center transition-transform group-hover:scale-110"
-              style={{ background: palette.cream, boxShadow: `0 20px 40px -10px ${palette.ink}80` }}>
-              <Play className="w-8 h-8 ml-1" style={{ color: palette.terracotta, fill: palette.terracotta }} />
-            </div>
-            <span className="text-sm font-medium text-white/90">Découvrez la solution en 60 secondes</span>
-          </div>
-        </div>
+      {/* Demo video */}
+      <div className="mt-10 mx-auto w-full max-w-sm sm:max-w-md">
+        <DemoVideoPlayer />
       </div>
 
       <button
