@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Play, MessageCircle } from "lucide-react";
+import demoVideo from "@/assets/demo-funnel.mp4.asset.json";
 
 const WHATSAPP_NUMBER = "212600000000";
 
