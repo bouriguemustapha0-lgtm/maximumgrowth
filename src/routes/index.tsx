@@ -147,11 +147,11 @@ function Nav() {
           <Link to="/funnel" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-glow" /> DEMO
           </Link>
-          <a href="#contact">
+          <Link to="/funnel">
             <Button variant="hero" size="sm">
               {t("nav.book")} <ArrowRight />
             </Button>
-          </a>
+          </Link>
         </div>
         <div className="md:hidden flex items-center gap-2">
           <LangToggle />
@@ -187,11 +187,11 @@ function Nav() {
                 <Link to="/funnel" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold tracking-wider border border-primary/40 text-primary">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-glow" /> DEMO — DEVIS SITE WEB
                 </Link>
-                <a href="#contact" onClick={() => setMobileOpen(false)}>
+                <Link to="/funnel" onClick={() => setMobileOpen(false)}>
                   <Button variant="hero" size="lg" className="w-full">
                     {t("nav.bookFree")} <ArrowRight />
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -257,7 +257,7 @@ function Hero() {
           </Reveal>
           <Reveal delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#contact"><Button variant="hero" size="lg">{t("hero.ctaPrimary")} <ArrowRight /></Button></a>
+              <Link to="/funnel"><Button variant="hero" size="lg">{t("hero.ctaPrimary")} <ArrowRight /></Button></Link>
               <a href="#work"><Button variant="heroOutline" size="lg">{t("hero.ctaSecondary")}</Button></a>
             </div>
           </Reveal>
