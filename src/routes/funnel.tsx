@@ -79,7 +79,11 @@ function FunnelPage() {
     <div
       className="min-h-screen w-full"
       style={{
-        background: `radial-gradient(1200px 600px at 10% -10%, ${palette.creamDeep}, ${palette.cream} 60%)`,
+        background: `
+          radial-gradient(1200px 600px at 80% -10%, #7F1D1D 0%, transparent 60%),
+          radial-gradient(900px 500px at 10% 110%, #991B1B 0%, transparent 55%),
+          linear-gradient(135deg, #450A0A 0%, #1A0505 50%, #450A0A 100%)
+        `,
         color: palette.ink,
         fontFamily: '"Inter", system-ui, sans-serif',
       }}
