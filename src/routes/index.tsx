@@ -257,7 +257,7 @@ function Hero() {
           </Reveal>
           <Reveal delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#contact"><Button variant="hero" size="lg">{t("hero.ctaPrimary")} <ArrowRight /></Button></a>
+              <Link to="/funnel"><Button variant="hero" size="lg">{t("hero.ctaPrimary")} <ArrowRight /></Button></Link>
               <a href="#work"><Button variant="heroOutline" size="lg">{t("hero.ctaSecondary")}</Button></a>
             </div>
           </Reveal>
