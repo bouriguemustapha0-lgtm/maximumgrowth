@@ -9,10 +9,10 @@ const WHATSAPP_NUMBER = "212699309986";
 export const Route = createFileRoute("/funnel")({
   head: () => ({
     meta: [
-      { title: "Free Growth Plan — Hotels, Riads & Guest Houses" },
-      { name: "description", content: "Get more direct bookings, be found on Google & AI search, and reduce your dependence on OTAs. Free personalized growth plan in 60 seconds." },
-      { property: "og:title", content: "Maximum Growth — Free Hospitality Growth Plan" },
-      { property: "og:description", content: "We help hotels, riads & guest houses win direct bookings and cut OTA fees." },
+      { title: "Plan de Croissance Gratuit — Hôtels, Riads & Maisons d'Hôtes" },
+      { name: "description", content: "Obtenez plus de réservations directes, soyez visible sur Google & la recherche IA, et réduisez votre dépendance aux OTA. Plan de croissance personnalisé gratuit en 60 secondes." },
+      { property: "og:title", content: "Maximum Growth — Plan de Croissance Hôtelier Gratuit" },
+      { property: "og:description", content: "Nous aidons hôtels, riads et maisons d'hôtes à gagner des réservations directes et réduire les commissions OTA." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },
     ],
@@ -115,7 +115,7 @@ function FunnelPage() {
       <header className="sticky top-0 z-40 backdrop-blur-xl border-b border-white/10 bg-black/40">
         <div className="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
           <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition">
-            <ArrowLeft className="w-4 h-4" /> Back to site
+            <ArrowLeft className="w-4 h-4" /> Retour au site
           </Link>
           <div className="flex items-center gap-2">
             <img src={logo} alt="Maximum Growth" className="h-7 w-auto" />
@@ -148,13 +148,13 @@ function FunnelPage() {
           {step === 1 && (
             <ChoiceStep
               stepNum={1}
-              title="Who are you?"
-              subtitle="Tell us a bit about your role in hospitality."
+              title="Qui êtes-vous ?"
+              subtitle="Parlez-nous un peu de votre rôle dans l'hôtellerie."
               options={[
-                { id: "hotel_owner", label: "I own a hotel", icon: "🏨" },
-                { id: "riad_owner", label: "I own a riad or guest house", icon: "🏡" },
-                { id: "manager", label: "I manage a hospitality property", icon: "🧑‍💼" },
-                { id: "none", label: "None of the above", icon: "❌" },
+                { id: "hotel_owner", label: "Je possède un hôtel", icon: "🏨" },
+                { id: "riad_owner", label: "Je possède un riad ou une maison d'hôte", icon: "🏡" },
+                { id: "manager", label: "Je gère un établissement hôtelier", icon: "🧑‍💼" },
+                { id: "none", label: "Aucune de ces réponses", icon: "❌" },
               ]}
               value={data.who}
               onChange={v => update("who", v)}
@@ -166,13 +166,13 @@ function FunnelPage() {
           {step === 2 && (
             <ChoiceStep
               stepNum={2}
-              title="What's your biggest goal?"
-              subtitle="If we could solve one problem for you, which would you choose?"
+              title="Quel est votre objectif principal ?"
+              subtitle="Si nous pouvions résoudre un seul problème pour vous, lequel choisiriez-vous ?"
               options={[
-                { id: "direct", label: "Get more direct bookings", icon: "💰" },
-                { id: "google", label: "Get more guests from Google", icon: "📈" },
-                { id: "presence", label: "Improve my online presence", icon: "🌍" },
-                { id: "all", label: "All of the above", icon: "🚀" },
+                { id: "direct", label: "Plus de réservations directes", icon: "💰" },
+                { id: "google", label: "Plus de clients via Google", icon: "📈" },
+                { id: "presence", label: "Améliorer ma présence en ligne", icon: "🌍" },
+                { id: "all", label: "Tout ce qui précède", icon: "🚀" },
               ]}
               value={data.goal}
               onChange={v => update("goal", v)}
@@ -184,13 +184,13 @@ function FunnelPage() {
           {step === 3 && (
             <ChoiceStep
               stepNum={3}
-              title="Do you already have a website?"
-              subtitle="What best describes your current situation?"
+              title="Avez-vous déjà un site web ?"
+              subtitle="Qu'est-ce qui décrit le mieux votre situation actuelle ?"
               options={[
-                { id: "yes_good", label: "Yes, and it's performing well", icon: "✅" },
-                { id: "yes_outdated", label: "Yes, but it's outdated", icon: "😕" },
-                { id: "no", label: "No, I don't have one", icon: "❌" },
-                { id: "unsure", label: "I'm not sure if it's helping", icon: "🤔" },
+                { id: "yes_good", label: "Oui, et il est performant", icon: "✅" },
+                { id: "yes_outdated", label: "Oui, mais il est dépassé", icon: "😕" },
+                { id: "no", label: "Non, je n'en ai pas", icon: "❌" },
+                { id: "unsure", label: "Je ne sais pas s'il m'aide vraiment", icon: "🤔" },
               ]}
               value={data.website}
               onChange={v => update("website", v)}
@@ -202,8 +202,8 @@ function FunnelPage() {
           {step === 4 && (
             <ChoiceStep
               stepNum={4}
-              title="Where is your property located?"
-              subtitle="Pick the city closest to your property."
+              title="Où se situe votre établissement ?"
+              subtitle="Choisissez la ville la plus proche de votre établissement."
               columns={4}
               options={[
                 { id: "Marrakech", label: "Marrakech", icon: "🕌" },
@@ -213,7 +213,7 @@ function FunnelPage() {
                 { id: "Agadir", label: "Agadir", icon: "🏖️" },
                 { id: "Tangier", label: "Tangier", icon: "⚓" },
                 { id: "Rabat", label: "Rabat", icon: "🏛️" },
-                { id: "Other", label: "Other", icon: "📍" },
+                { id: "Other", label: "Autre", icon: "📍" },
               ]}
               value={data.location}
               onChange={v => update("location", v)}
@@ -225,13 +225,13 @@ function FunnelPage() {
           {step === 5 && (
             <ChoiceStep
               stepNum={5}
-              title="When would you like to improve your online presence?"
-              subtitle="Choose the timing that fits you best."
+              title="Quand souhaitez-vous améliorer votre présence en ligne ?"
+              subtitle="Choisissez le délai qui vous convient le mieux."
               options={[
-                { id: "this_week", label: "This week", icon: "⚡" },
-                { id: "two_weeks", label: "Within 2 weeks", icon: "📆" },
-                { id: "one_month", label: "Within a month", icon: "🗓️" },
-                { id: "researching", label: "Just researching", icon: "🔍" },
+                { id: "this_week", label: "Cette semaine", icon: "⚡" },
+                { id: "two_weeks", label: "D'ici 2 semaines", icon: "📆" },
+                { id: "one_month", label: "D'ici un mois", icon: "🗓️" },
+                { id: "researching", label: "Je me renseigne", icon: "🔍" },
               ]}
               value={data.timing}
               onChange={v => update("timing", v)}
@@ -254,7 +254,7 @@ function FunnelPage() {
       </main>
 
       <footer className="pb-10 text-center text-xs text-white/40 relative">
-        © {new Date().getFullYear()} Maximum Growth — Direct bookings for Moroccan hospitality.
+        © {new Date().getFullYear()} Maximum Growth — Réservations directes pour l'hôtellerie marocaine.
       </footer>
     </div>
   );
@@ -286,7 +286,7 @@ function NavButtons({
   onBack,
   onNext,
   canNext = true,
-  nextLabel = "Continue",
+  nextLabel = "Continuer",
 }: {
   onBack?: () => void;
   onNext?: () => void;
@@ -300,7 +300,7 @@ function NavButtons({
           onClick={onBack}
           className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition"
         >
-          <ArrowLeft className="w-4 h-4" /> Back
+          <ArrowLeft className="w-4 h-4" /> Retour
         </button>
       ) : <span />}
       {onNext && (
@@ -369,7 +369,7 @@ function DemoVideoPlayer() {
           >
             <Play className="w-8 h-8 ml-1 text-white" fill="white" />
           </div>
-          <span className="text-sm font-medium text-white/90">Watch the 60-second demo</span>
+          <span className="text-sm font-medium text-white/90">Découvrez la démo en 60 secondes</span>
         </button>
       )}
     </div>
@@ -381,17 +381,17 @@ function StepHero({ onStart }: { onStart: () => void }) {
   return (
     <div className="text-center pt-4">
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold tracking-[0.2em] mb-8 border border-primary/40 bg-primary/10 text-primary">
-        <Sparkles className="w-3.5 h-3.5" /> FREE GROWTH PLAN · 60 SECONDS
+        <Sparkles className="w-3.5 h-3.5" /> PLAN DE CROISSANCE GRATUIT · 60 SECONDES
       </div>
 
       <h1 className="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight max-w-3xl mx-auto text-white">
-        More direct bookings.{" "}
-        <span className="text-gradient">Less commission.</span>
+        Plus de réservations directes.{" "}
+        <span className="text-gradient">Moins de commissions.</span>
       </h1>
 
       <p className="mt-6 max-w-2xl mx-auto text-lg text-white/70">
-        We help guest houses, riads, and hotels get more direct bookings,
-        become visible on Google and AI search, and reduce their dependence on OTAs.
+        Nous aidons les maisons d'hôtes, riads et hôtels à obtenir plus de réservations directes,
+        à devenir visibles sur Google et la recherche IA, et à réduire leur dépendance aux OTA.
       </p>
 
       <div className="mt-10 mx-auto w-full max-w-sm sm:max-w-md">
@@ -406,11 +406,11 @@ function StepHero({ onStart }: { onStart: () => void }) {
           boxShadow: "0 25px 50px -15px rgba(220,38,38,0.8)",
         }}
       >
-        Get My Free Growth Plan <ArrowRight className="w-5 h-5" />
+        Obtenir mon plan gratuit <ArrowRight className="w-5 h-5" />
       </button>
 
       <div className="mt-6 text-xs text-white/50">
-        No commitment · Free plan · Reply within 24h
+        Sans engagement · Plan gratuit · Réponse sous 24h
       </div>
     </div>
   );
@@ -444,7 +444,7 @@ function ChoiceStep({
 
   return (
     <div>
-      <StepTitle eyebrow={`Step ${stepNum} of ${TOTAL_STEPS}`} title={title} subtitle={subtitle} />
+      <StepTitle eyebrow={`Étape ${stepNum} sur ${TOTAL_STEPS}`} title={title} subtitle={subtitle} />
       <div className={gridCls}>
         {options.map(o => {
           const active = value === o.id;
@@ -515,9 +515,9 @@ function StepContact({
   return (
     <div>
       <StepTitle
-        eyebrow={`Step 6 of ${TOTAL_STEPS}`}
-        title="Let's discuss your property's growth."
-        subtitle="Enter your details — we'll send your personalized growth plan within 24 hours."
+        eyebrow={`Étape 6 sur ${TOTAL_STEPS}`}
+        title="Discutons de la croissance de votre établissement."
+        subtitle="Renseignez vos coordonnées — nous vous enverrons votre plan personnalisé sous 24h."
       />
 
       <div
@@ -527,26 +527,26 @@ function StepContact({
           boxShadow: "0 30px 80px -30px rgba(220,38,38,0.4)",
         }}
       >
-        <Field label="Full name" required>
+        <Field label="Nom complet" required>
           <input
             type="text"
             value={data.fullName}
             onChange={e => update("fullName", e.target.value)}
-            placeholder="e.g. Karim Alaoui"
+            placeholder="Ex : Karim Alaoui"
             className="funnel-input"
           />
         </Field>
-        <Field label="Property name" required>
+        <Field label="Nom de l'établissement" required>
           <input
             type="text"
             value={data.propertyName}
             onChange={e => update("propertyName", e.target.value)}
-            placeholder="e.g. Riad Zahra"
+            placeholder="Ex : Riad Zahra"
             className="funnel-input"
           />
         </Field>
         <div className="grid sm:grid-cols-2 gap-5">
-          <Field label="Phone number" required>
+          <Field label="Numéro de téléphone" required>
             <input
               type="tel"
               value={data.phone}
@@ -555,12 +555,12 @@ function StepContact({
               className="funnel-input"
             />
           </Field>
-          <Field label="Email address" required>
+          <Field label="Adresse email" required>
             <input
               type="email"
               value={data.email}
               onChange={e => update("email", e.target.value)}
-              placeholder="you@yourproperty.com"
+              placeholder="vous@votreetablissement.com"
               className="funnel-input"
             />
           </Field>
@@ -571,7 +571,7 @@ function StepContact({
         onBack={onBack}
         onNext={onSubmit}
         canNext={valid}
-        nextLabel="Get My Free Growth Plan"
+        nextLabel="Obtenir mon plan gratuit"
       />
 
       <style>{`
@@ -611,48 +611,48 @@ function Field({ label, required, children }: { label: string; required?: boolea
 /* ============ Recap ============ */
 const LABELS: Record<string, Record<string, string>> = {
   who: {
-    hotel_owner: "Hotel owner",
-    riad_owner: "Riad / guest house owner",
-    manager: "Hospitality manager",
-    none: "Other",
+    hotel_owner: "Propriétaire d'hôtel",
+    riad_owner: "Propriétaire de riad / maison d'hôte",
+    manager: "Gérant hôtelier",
+    none: "Autre",
   },
   goal: {
-    direct: "More direct bookings",
-    google: "More guests from Google",
-    presence: "Improve online presence",
-    all: "All of the above",
+    direct: "Plus de réservations directes",
+    google: "Plus de clients via Google",
+    presence: "Améliorer la présence en ligne",
+    all: "Tout ce qui précède",
   },
   website: {
-    yes_good: "Yes — performing well",
-    yes_outdated: "Yes — outdated",
-    no: "No website yet",
-    unsure: "Not sure if it's helping",
+    yes_good: "Oui — performant",
+    yes_outdated: "Oui — dépassé",
+    no: "Pas encore de site",
+    unsure: "Pas sûr qu'il aide",
   },
   timing: {
-    this_week: "This week",
-    two_weeks: "Within 2 weeks",
-    one_month: "Within a month",
-    researching: "Just researching",
+    this_week: "Cette semaine",
+    two_weeks: "D'ici 2 semaines",
+    one_month: "D'ici un mois",
+    researching: "Je me renseigne",
   },
 };
 
 function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
   const message = [
-    "Hello! I just filled out the Maximum Growth funnel.",
-    "Here are my details:",
+    "Bonjour ! Je viens de remplir le formulaire Maximum Growth.",
+    "Voici mes informations :",
     "───────────────",
-    `• Who: ${LABELS.who[data.who] ?? data.who}`,
-    `• Goal: ${LABELS.goal[data.goal] ?? data.goal}`,
-    `• Website: ${LABELS.website[data.website] ?? data.website}`,
-    `• Location: ${data.location}`,
-    `• Timing: ${LABELS.timing[data.timing] ?? data.timing}`,
+    `• Qui : ${LABELS.who[data.who] ?? data.who}`,
+    `• Objectif : ${LABELS.goal[data.goal] ?? data.goal}`,
+    `• Site web : ${LABELS.website[data.website] ?? data.website}`,
+    `• Ville : ${data.location}`,
+    `• Délai : ${LABELS.timing[data.timing] ?? data.timing}`,
     "───────────────",
-    `• Name: ${data.fullName}`,
-    `• Property: ${data.propertyName}`,
-    `• Phone: ${data.phone}`,
-    `• Email: ${data.email}`,
+    `• Nom : ${data.fullName}`,
+    `• Établissement : ${data.propertyName}`,
+    `• Téléphone : ${data.phone}`,
+    `• Email : ${data.email}`,
     "",
-    "Please send me my free growth plan. Thanks!",
+    "Merci de m'envoyer mon plan de croissance gratuit !",
   ].join("\n");
 
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -669,10 +669,10 @@ function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
       <div className="text-center mb-10">
         <div className="text-5xl mb-4">🎉</div>
         <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
-          Your growth plan is ready!
+          Votre plan de croissance est prêt !
         </h2>
         <p className="mt-4 text-base sm:text-lg text-white/70 max-w-xl mx-auto">
-          Thanks {data.fullName || "!"} — send your details on WhatsApp and we'll reply within 24 hours with your personalized plan.
+          Merci {data.fullName || "!"} — envoyez vos informations sur WhatsApp et nous vous répondrons sous 24h avec votre plan personnalisé.
         </p>
       </div>
 
@@ -684,16 +684,16 @@ function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
         }}
       >
         <div className="text-[11px] font-bold tracking-[0.24em] mb-5 text-primary uppercase">
-          Your submission
+          Votre demande
         </div>
-        <Row label="Who you are" value={LABELS.who[data.who] ?? data.who} />
-        <Row label="Main goal" value={LABELS.goal[data.goal] ?? data.goal} />
-        <Row label="Current website" value={LABELS.website[data.website] ?? data.website} />
-        <Row label="Location" value={data.location} />
-        <Row label="Timing" value={LABELS.timing[data.timing] ?? data.timing} />
-        <Row label="Full name" value={data.fullName} />
-        <Row label="Property" value={data.propertyName} />
-        <Row label="Phone" value={data.phone} />
+        <Row label="Qui vous êtes" value={LABELS.who[data.who] ?? data.who} />
+        <Row label="Objectif principal" value={LABELS.goal[data.goal] ?? data.goal} />
+        <Row label="Site actuel" value={LABELS.website[data.website] ?? data.website} />
+        <Row label="Ville" value={data.location} />
+        <Row label="Délai" value={LABELS.timing[data.timing] ?? data.timing} />
+        <Row label="Nom complet" value={data.fullName} />
+        <Row label="Établissement" value={data.propertyName} />
+        <Row label="Téléphone" value={data.phone} />
         <Row label="Email" value={data.email} />
       </div>
 
@@ -707,7 +707,7 @@ function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
           boxShadow: "0 25px 60px -15px rgba(37,211,102,0.6)",
         }}
       >
-        <MessageCircle className="w-6 h-6" /> Send my plan via WhatsApp
+        <MessageCircle className="w-6 h-6" /> Envoyer via WhatsApp
       </a>
 
       <div className="mt-6 flex items-center justify-center">
@@ -715,7 +715,7 @@ function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
           onClick={onBack}
           className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white bg-white/5 hover:bg-white/10 transition"
         >
-          <ArrowLeft className="w-4 h-4" /> Edit my answers
+          <ArrowLeft className="w-4 h-4" /> Modifier mes réponses
         </button>
       </div>
     </div>
