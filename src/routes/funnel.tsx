@@ -245,7 +245,12 @@ function FunnelPage() {
               data={data}
               update={update}
               onBack={() => setStep(5)}
-              onSubmit={() => setStep(7)}
+              onSubmit={() => {
+                const msg = buildWhatsAppMessage(data);
+                const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+                window.open(url, "_blank", "noopener,noreferrer");
+                setStep(7);
+              }}
             />
           )}
 
