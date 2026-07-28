@@ -147,11 +147,11 @@ function Nav() {
           <Link to="/funnel" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-glow" /> DEMO
           </Link>
-          <a href="#contact">
+          <Link to="/funnel">
             <Button variant="hero" size="sm">
               {t("nav.book")} <ArrowRight />
             </Button>
-          </a>
+          </Link>
         </div>
         <div className="md:hidden flex items-center gap-2">
           <LangToggle />
