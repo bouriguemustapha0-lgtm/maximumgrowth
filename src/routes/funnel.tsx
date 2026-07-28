@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Play, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ExternalLink, Play, MessageCircle, Sparkles } from "lucide-react";
 import demoVideo from "@/assets/demo-funnel.mp4.asset.json";
 import logo from "@/assets/mg-logo.png";
 
