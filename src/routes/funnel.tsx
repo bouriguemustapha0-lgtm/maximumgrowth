@@ -237,25 +237,9 @@ function StepHero({ onStart }: { onStart: () => void }) {
         de vos calendriers et encaissez vos paiements sur votre compte bancaire marocain.
       </p>
 
-      {/* Video placeholder */}
-      <div className="mt-10 max-w-3xl mx-auto">
-        <div
-          className="relative aspect-video rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
-          style={{
-            background: `linear-gradient(135deg, ${palette.emerald}, ${palette.emeraldDark})`,
-            boxShadow: `0 30px 80px -30px ${palette.emerald}80`,
-          }}
-        >
-          <div className="absolute inset-0 opacity-20"
-            style={{ backgroundImage: `radial-gradient(circle at 30% 30%, ${palette.gold}, transparent 60%)` }} />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <div className="w-20 h-20 rounded-full grid place-items-center transition-transform group-hover:scale-110"
-              style={{ background: palette.cream, boxShadow: `0 20px 40px -10px ${palette.ink}80` }}>
-              <Play className="w-8 h-8 ml-1" style={{ color: palette.terracotta, fill: palette.terracotta }} />
-            </div>
-            <span className="text-sm font-medium text-white/90">Découvrez la solution en 60 secondes</span>
-          </div>
-        </div>
+      {/* Demo video */}
+      <div className="mt-10 mx-auto w-full max-w-sm sm:max-w-md">
+        <DemoVideoPlayer />
       </div>
 
       <button
