@@ -414,6 +414,14 @@ function StepHero({ onStart }: { onStart: () => void }) {
         Obtenir mon plan gratuit <ArrowRight className="w-5 h-5" />
       </button>
 
+      <a
+        href="/#work"
+        className="mt-4 inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-semibold text-white/80 transition hover:text-white hover:bg-white/10 border border-white/15 hover:border-white/25"
+      >
+        <ExternalLink className="w-4 h-4" />
+        Nos réalisations hôtelières
+      </a>
+
       <div className="mt-6 text-xs text-white/50">
         Sans engagement · Plan gratuit · Réponse sous 24h
       </div>
