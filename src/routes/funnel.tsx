@@ -238,7 +238,7 @@ function FunnelPage() {
                 const msg = buildWhatsAppMessage(data);
                 const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
                 window.open(url, "_blank", "noopener,noreferrer");
-                navigate({ to: "/funnel/thankyou", state: { data } });
+                navigate({ to: "/funnel/thankyou", state: { data: data as unknown } });
               }}
             />
           )}
