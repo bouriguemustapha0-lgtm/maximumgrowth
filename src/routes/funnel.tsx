@@ -78,7 +78,8 @@ function LivingBackground() {
 
 /* ============ Page ============ */
 function FunnelPage() {
-  const [step, setStep] = useState(0); // 0 = hero, 1..6 form, 7 = recap
+  const navigate = useNavigate();
+  const [step, setStep] = useState(0); // 0 = hero, 1..6 form
   const [data, setData] = useState<FormState>(initialState);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
