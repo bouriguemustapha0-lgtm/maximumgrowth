@@ -1,10 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ExternalLink, Play, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ExternalLink, Play, Sparkles } from "lucide-react";
 import demoVideo from "@/assets/demo-funnel.mp4";
 import logo from "@/assets/mg-logo.png";
-
-const WHATSAPP_NUMBER = "212699309986";
+import { buildWhatsAppMessage, initialState, WHATSAPP_NUMBER, type FormState } from "@/lib/funnel";
 
 export const Route = createFileRoute("/funnel")({
   head: () => ({

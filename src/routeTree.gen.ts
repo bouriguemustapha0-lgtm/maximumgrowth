@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as FunnelRouteImport } from './routes/funnel'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FunnelThankyouRouteImport } from './routes/funnel.thankyou'
 
 const FunnelRoute = FunnelRouteImport.update({
   id: '/funnel',
@@ -22,31 +23,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FunnelThankyouRoute = FunnelThankyouRouteImport.update({
+  id: '/thankyou',
+  path: '/thankyou',
+  getParentRoute: () => FunnelRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/funnel': typeof FunnelRoute
+  '/funnel': typeof FunnelRouteWithChildren
+  '/funnel/thankyou': typeof FunnelThankyouRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/funnel': typeof FunnelRoute
+  '/funnel': typeof FunnelRouteWithChildren
+  '/funnel/thankyou': typeof FunnelThankyouRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/funnel': typeof FunnelRoute
+  '/funnel': typeof FunnelRouteWithChildren
+  '/funnel/thankyou': typeof FunnelThankyouRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/funnel'
+  fullPaths: '/' | '/funnel' | '/funnel/thankyou'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/funnel'
-  id: '__root__' | '/' | '/funnel'
+  to: '/' | '/funnel' | '/funnel/thankyou'
+  id: '__root__' | '/' | '/funnel' | '/funnel/thankyou'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  FunnelRoute: typeof FunnelRoute
+  FunnelRoute: typeof FunnelRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +74,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/funnel/thankyou': {
+      id: '/funnel/thankyou'
+      path: '/thankyou'
+      fullPath: '/funnel/thankyou'
+      preLoaderRoute: typeof FunnelThankyouRouteImport
+      parentRoute: typeof FunnelRoute
+    }
   }
 }
 
+interface FunnelRouteChildren {
+  FunnelThankyouRoute: typeof FunnelThankyouRoute
+}
+
+const FunnelRouteChildren: FunnelRouteChildren = {
+  FunnelThankyouRoute: FunnelThankyouRoute,
+}
+
+const FunnelRouteWithChildren =
+  FunnelRoute._addFileChildren(FunnelRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  FunnelRoute: FunnelRoute,
+  FunnelRoute: FunnelRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
