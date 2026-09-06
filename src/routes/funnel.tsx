@@ -238,12 +238,10 @@ function FunnelPage() {
                 const msg = buildWhatsAppMessage(data);
                 const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
                 window.open(url, "_blank", "noopener,noreferrer");
-                setStep(7);
+                navigate({ to: "/funnel/thankyou", state: { data } });
               }}
             />
           )}
-
-          {step === 7 && <StepRecap data={data} onBack={() => setStep(6)} />}
         </div>
       </main>
 
