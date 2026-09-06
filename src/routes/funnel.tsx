@@ -24,31 +24,6 @@ export const Route = createFileRoute("/funnel")({
   component: FunnelPage,
 });
 
-/* ============ State ============ */
-type FormState = {
-  who: string;
-  goal: string;
-  website: string;
-  location: string;
-  timing: string;
-  fullName: string;
-  propertyName: string;
-  phone: string;
-  email: string;
-};
-
-const initialState: FormState = {
-  who: "",
-  goal: "",
-  website: "",
-  location: "",
-  timing: "",
-  fullName: "",
-  propertyName: "",
-  phone: "+212 ",
-  email: "",
-};
-
 const TOTAL_STEPS = 6;
 
 /* ============ Living background ============ */
