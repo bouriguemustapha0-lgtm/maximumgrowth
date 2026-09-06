@@ -114,6 +114,15 @@ function FunnelPage() {
 
   return (
     <div className="relative min-h-screen w-full text-foreground font-sans">
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          src="https://www.facebook.com/tr?id=1797252747954860&ev=PageView&noscript=1"
+          alt=""
+        />
+      </noscript>
       <LivingBackground />
 
       {/* Top bar */}
