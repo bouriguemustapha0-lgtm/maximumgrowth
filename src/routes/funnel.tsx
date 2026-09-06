@@ -1,10 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ExternalLink, Play, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ExternalLink, Play, Sparkles } from "lucide-react";
 import demoVideo from "@/assets/demo-funnel.mp4";
 import logo from "@/assets/mg-logo.png";
-
-const WHATSAPP_NUMBER = "212699309986";
+import { buildWhatsAppMessage, initialState, WHATSAPP_NUMBER, type FormState } from "@/lib/funnel";
 
 export const Route = createFileRoute("/funnel")({
   head: () => ({
@@ -24,31 +23,6 @@ export const Route = createFileRoute("/funnel")({
   }),
   component: FunnelPage,
 });
-
-/* ============ State ============ */
-type FormState = {
-  who: string;
-  goal: string;
-  website: string;
-  location: string;
-  timing: string;
-  fullName: string;
-  propertyName: string;
-  phone: string;
-  email: string;
-};
-
-const initialState: FormState = {
-  who: "",
-  goal: "",
-  website: "",
-  location: "",
-  timing: "",
-  fullName: "",
-  propertyName: "",
-  phone: "+212 ",
-  email: "",
-};
 
 const TOTAL_STEPS = 6;
 
@@ -104,7 +78,8 @@ function LivingBackground() {
 
 /* ============ Page ============ */
 function FunnelPage() {
-  const [step, setStep] = useState(0); // 0 = hero, 1..6 form, 7 = recap
+  const navigate = useNavigate();
+  const [step, setStep] = useState(0); // 0 = hero, 1..6 form
   const [data, setData] = useState<FormState>(initialState);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
@@ -263,12 +238,10 @@ function FunnelPage() {
                 const msg = buildWhatsAppMessage(data);
                 const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
                 window.open(url, "_blank", "noopener,noreferrer");
-                setStep(7);
+                navigate({ to: "/funnel/thankyou", state: { data } as Record<string, unknown> });
               }}
             />
           )}
-
-          {step === 7 && <StepRecap data={data} onBack={() => setStep(6)} />}
         </div>
       </main>
 
@@ -635,119 +608,3 @@ function Field({ label, required, children }: { label: string; required?: boolea
   );
 }
 
-/* ============ Recap ============ */
-const LABELS: Record<string, Record<string, string>> = {
-  who: {
-    hotel_owner: "Propriétaire d'hôtel",
-    riad_owner: "Propriétaire de riad / maison d'hôte",
-    manager: "Gérant hôtelier",
-    none: "Autre",
-  },
-  goal: {
-    direct: "Plus de réservations directes",
-    google: "Plus de clients via Google",
-    presence: "Améliorer la présence en ligne",
-    all: "Tout ce qui précède",
-  },
-  website: {
-    yes_good: "Oui — performant",
-    yes_outdated: "Oui — dépassé",
-    no: "Pas encore de site",
-    unsure: "Pas sûr qu'il aide",
-  },
-  timing: {
-    this_week: "Cette semaine",
-    two_weeks: "D'ici 2 semaines",
-    one_month: "D'ici un mois",
-    researching: "Je me renseigne",
-  },
-};
-
-function buildWhatsAppMessage(data: FormState): string {
-  return [
-    "Bonjour ! Je viens de remplir le formulaire Maximum Growth.",
-    "Voici mes informations :",
-    "───────────────",
-    `• Qui : ${LABELS.who[data.who] ?? data.who}`,
-    `• Objectif : ${LABELS.goal[data.goal] ?? data.goal}`,
-    `• Site web : ${LABELS.website[data.website] ?? data.website}`,
-    `• Ville : ${data.location}`,
-    `• Délai : ${LABELS.timing[data.timing] ?? data.timing}`,
-    "───────────────",
-    `• Nom : ${data.fullName}`,
-    `• Établissement : ${data.propertyName}`,
-    `• Téléphone : ${data.phone}`,
-    `• Email : ${data.email}`,
-    "",
-    "Merci de m'envoyer mon plan de croissance gratuit !",
-  ].join("\n");
-}
-
-function StepRecap({ data, onBack }: { data: FormState; onBack: () => void }) {
-  const message = buildWhatsAppMessage(data);
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-  const Row = ({ label, value }: { label: string; value: string }) => (
-    <div className="flex justify-between gap-4 py-3 border-b border-white/10">
-      <span className="text-[11px] font-bold uppercase tracking-widest text-white/50">{label}</span>
-      <span className="text-sm font-medium text-right text-white">{value || "—"}</span>
-    </div>
-  );
-
-  return (
-    <div>
-      <div className="text-center mb-10">
-        <div className="text-5xl mb-4">🎉</div>
-        <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
-          Votre plan de croissance est prêt !
-        </h2>
-        <p className="mt-4 text-base sm:text-lg text-white/70 max-w-xl mx-auto">
-          Merci {data.fullName || "!"} — envoyez vos informations sur WhatsApp et nous vous répondrons sous 24h avec votre plan personnalisé.
-        </p>
-      </div>
-
-      <div
-        className="rounded-3xl p-6 sm:p-8 mb-6 backdrop-blur-xl border border-primary/30"
-        style={{
-          background: "linear-gradient(135deg, rgba(20,5,5,0.75), rgba(10,0,0,0.65))",
-          boxShadow: "0 30px 80px -30px rgba(220,38,38,0.4)",
-        }}
-      >
-        <div className="text-[11px] font-bold tracking-[0.24em] mb-5 text-primary uppercase">
-          Votre demande
-        </div>
-        <Row label="Qui vous êtes" value={LABELS.who[data.who] ?? data.who} />
-        <Row label="Objectif principal" value={LABELS.goal[data.goal] ?? data.goal} />
-        <Row label="Site actuel" value={LABELS.website[data.website] ?? data.website} />
-        <Row label="Ville" value={data.location} />
-        <Row label="Délai" value={LABELS.timing[data.timing] ?? data.timing} />
-        <Row label="Nom complet" value={data.fullName} />
-        <Row label="Établissement" value={data.propertyName} />
-        <Row label="Téléphone" value={data.phone} />
-        <Row label="Email" value={data.email} />
-      </div>
-
-      <a
-        href={waUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full flex items-center justify-center gap-3 px-8 py-5 rounded-2xl text-lg font-bold text-white transition hover:scale-[1.01]"
-        style={{
-          background: "linear-gradient(135deg, #25D366, #128C7E)",
-          boxShadow: "0 25px 60px -15px rgba(37,211,102,0.6)",
-        }}
-      >
-        <MessageCircle className="w-6 h-6" /> Envoyer via WhatsApp
-      </a>
-
-      <div className="mt-6 flex items-center justify-center">
-        <button
-          onClick={onBack}
-          className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white bg-white/5 hover:bg-white/10 transition"
-        >
-          <ArrowLeft className="w-4 h-4" /> Modifier mes réponses
-        </button>
-      </div>
-    </div>
-  );
-}
